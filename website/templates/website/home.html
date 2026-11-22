@@ -1,0 +1,1109 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>H.H. Inter College | Quality Education</title>
+
+    <link rel="stylesheet" href="{% static 'website/css/style.css' %}">
+</head>
+
+<body>
+
+    <!-- ==========================================
+         START: HEADER / NAVBAR SECTION
+    ========================================== -->
+
+    <header class="header">
+        <nav class="navbar container">
+
+            <a href="#home" class="logo">
+                <span class="logo-icon">HH</span>
+                <span>H.H. <small>INTER COLLEGE</small></span>
+            </a>
+
+            <button
+                class="menu-toggle"
+                id="menuToggle"
+                type="button"
+                aria-label="Toggle navigation"
+                aria-expanded="false">
+                ☰
+            </button>
+
+            <ul class="nav-links" id="navLinks">
+
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#academics">Academics</a></li>
+                <li><a href="#facilities">Facilities</a></li>
+                <li><a href="#gallery">Gallery</a></li>
+               
+                <li><a href="#contact">Contact</a></li>
+
+                <li>
+                    <a href="{% url 'admission_enquiry' %}" class="nav-btn">
+                        Admission Enquiry
+                    </a>
+                </li>
+
+            </ul>
+        </nav>
+    </header>
+
+    <!-- ==========================================
+         END: HEADER / NAVBAR SECTION
+    ========================================== -->
+
+
+    <!-- ==========================================
+         START: MAIN PAGE CONTENT
+    ========================================== -->
+    <main>
+
+        <!-- ==========================================
+             START: HERO / HOME SECTION
+        ========================================== -->
+
+        <section class="hero" id="home">
+
+            <div class="container hero-content">
+
+                <div class="hero-text">
+
+                    <span class="eyebrow">
+                        WELCOME TO H.H. INTER COLLEGE
+                    </span>
+
+                    <h1>
+                        Building Bright
+                        <span>Futures</span>
+                        Through Education
+                    </h1>
+
+                    <p>
+                        Discover a place where knowledge meets opportunity.
+                        We inspire students to learn, grow and achieve
+                        their dreams.
+                    </p>
+
+                    <div class="hero-buttons">
+
+                        <a href="#about" class="btn btn-primary">
+                            Explore College
+                        </a>
+
+                        <a href="#contact" class="btn btn-outline">
+                            Contact Us
+                        </a>
+
+                    </div>
+
+                    <div class="hero-location">
+                        <span>📍</span>
+                        Mohammadpur Babai, Chandausi,
+                        Sambhal, Uttar Pradesh
+                    </div>
+
+                </div>
+
+                <div class="hero-visual">
+
+                    <div class="visual-circle"></div>
+
+                    <div class="education-card">
+                        <div class="book-icon">📚</div>
+                        <h2>Learn Today</h2>
+                        <p>Lead Tomorrow</p>
+                    </div>
+
+                    <div class="floating-card card-one">
+                        🎓 Quality Education
+                    </div>
+
+                    <div class="floating-card card-two">
+                        ✨ Bright Future
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+        <!-- ==========================================
+             END: HERO / HOME SECTION
+        ========================================== -->
+
+
+        <!-- ==========================================
+             START: ABOUT SECTION
+        ========================================== -->
+
+        <section class="about-section" id="about">
+
+            <div class="container about-grid">
+
+                <div class="about-visual">
+
+                    <div class="about-image-card">
+                        <span class="about-icon">🏫</span>
+                        <h3>H.H. Inter College</h3>
+                        <p>Learning • Growing • Achieving</p>
+                    </div>
+
+                    <div class="about-experience">
+                        <strong>Education</strong>
+                        <span>For a Brighter Future</span>
+                    </div>
+
+                </div>
+
+                <div class="about-content">
+
+                    <span class="section-label">
+                        ABOUT OUR COLLEGE
+                    </span>
+
+                    <h2>
+                        Empowering Students Through
+                        <span>Quality Education</span>
+                    </h2>
+
+                    <p>
+                        Welcome to H.H. Inter College,
+                        Mohammadpur Babai, Chandausi,
+                        Sambhal, Uttar Pradesh.
+                    </p>
+
+                    <p>
+                        Our aim is to provide students with a
+                        positive learning environment where
+                        they can develop knowledge, confidence,
+                        discipline and essential life skills.
+                    </p>
+
+                    <div class="about-points">
+
+                        <div class="about-point">
+                            <span>✓</span>
+                            <div>
+                                <h4>Student-Focused Learning</h4>
+                                <p>
+                                    Encouraging every student
+                                    to learn and grow.
+                                </p>
+                            </div>
+                        </div>
+
+                        <div class="about-point">
+                            <span>✓</span>
+                            <div>
+                                <h4>Holistic Development</h4>
+                                <p>
+                                    Building knowledge,
+                                    values and confidence.
+                                </p>
+                            </div>
+                        </div>
+
+                        <div class="about-point">
+                            <span>✓</span>
+                            <div>
+                                <h4>Positive Environment</h4>
+                                <p>
+                                    Creating opportunities
+                                    for a brighter future.
+                                </p>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <a href="#contact" class="btn btn-primary">
+                        Know More
+                    </a>
+
+                </div>
+
+            </div>
+
+        </section>
+
+        <!-- ==========================================
+             END: ABOUT SECTION
+        ========================================== -->
+
+
+        <!-- ==========================================
+             START: ACADEMICS SECTION
+        ========================================== -->
+
+        <section class="academics-section" id="academics">
+
+            <div class="container">
+
+                <div class="section-heading">
+
+                    <span class="section-label">
+                        OUR ACADEMICS
+                    </span>
+
+                    <h2>
+                        Learning That Builds
+                        <span>Bright Futures</span>
+                    </h2>
+
+                    <p>
+                        Developing knowledge, skills and
+                        confidence for tomorrow.
+                    </p>
+
+                </div>
+
+                <div class="academic-grid">
+
+                    <div class="academic-card premium-reveal-card">
+                        <div class="academic-icon">📚</div>
+                        <h3>Quality Learning</h3>
+                        <p>
+                            Focus on understanding concepts
+                            and building strong academic foundations.
+                        </p>
+                        <a href="#contact">Learn More →</a>
+                    </div>
+
+                    <div class="academic-card premium-reveal-card">
+                        <div class="academic-icon">🔬</div>
+                        <h3>Practical Knowledge</h3>
+                        <p>
+                            Encouraging curiosity, creativity
+                            and learning through practical activities.
+                        </p>
+                        <a href="#contact">Learn More →</a>
+                    </div>
+
+                    <div class="academic-card premium-reveal-card">
+                        <div class="academic-icon">🎯</div>
+                        <h3>Student Development</h3>
+                        <p>
+                            Helping students develop discipline,
+                            confidence and problem-solving skills.
+                        </p>
+                        <a href="#contact">Learn More →</a>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+        <!-- ==========================================
+             END: ACADEMICS SECTION
+        ========================================== -->
+
+
+        <!-- ==========================================
+             START: NOTICE BOARD / ANNOUNCEMENTS
+        ========================================== -->
+
+        <section class="announcement-section" id="announcements">
+
+            <div class="container">
+
+                <div class="section-heading">
+
+                    <span class="section-label">
+                        LATEST UPDATES
+                    </span>
+
+                    <h2>
+                        Latest <span>Announcements</span>
+                    </h2>
+
+                    <p>
+                        Stay updated with the latest college
+                        news and notices.
+                    </p>
+
+                </div>
+
+                <div class="announcement-grid">
+
+                    {% for notice in notices %}
+
+                    <div class="announcement-card premium-reveal-card">
+
+                        <div class="announcement-date">
+                            {{ notice.published_date|date:"d M Y" }}
+                        </div>
+
+                        <h3>{{ notice.title }}</h3>
+
+                        <p>
+                            {{ notice.description|truncatewords:25 }}
+                        </p>
+
+                        {% if notice.notice_file %}
+                        <a
+                            href="{{ notice.notice_file.url }}"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            class="notice-download">
+                            <span>Download Notice</span>
+                            <span class="notice-arrow" aria-hidden="true">→</span>
+                        </a>
+                        {% endif %}
+
+                    </div>
+
+                    {% empty %}
+
+                    <p class="no-notice">
+                        No announcements available right now.
+                    </p>
+
+                    {% endfor %}
+
+                </div>
+
+            </div>
+
+        </section>
+
+        <!-- ==========================================
+             END: NOTICE BOARD / ANNOUNCEMENTS
+        ========================================== -->
+
+
+        <!-- ==========================================
+             START: FACILITIES SECTION
+        ========================================== -->
+
+        <section class="facilities-section" id="facilities">
+
+            <div class="container">
+
+                <div class="section-heading">
+
+                    <span class="section-label">
+                        OUR FACILITIES
+                    </span>
+
+                    <h2>
+                        Everything Students Need to
+                        <span>Grow</span>
+                    </h2>
+
+                    <p>
+                        A supportive environment for learning,
+                        creativity and development.
+                    </p>
+
+                </div>
+
+                <div class="facilities-grid">
+
+                    <div class="facility-card premium-reveal-card">
+                        <div class="facility-icon">📚</div>
+                        <h3>Library</h3>
+                        <p>
+                            A learning space that encourages
+                            reading, knowledge and discovery.
+                        </p>
+                    </div>
+
+                    <div class="facility-card premium-reveal-card">
+                        <div class="facility-icon">🔬</div>
+                        <h3>Science Laboratory</h3>
+                        <p>
+                            Encouraging curiosity and practical
+                            understanding through experiments.
+                        </p>
+                    </div>
+
+                    <div class="facility-card premium-reveal-card">
+                        <div class="facility-icon">💻</div>
+                        <h3>Computer Education</h3>
+                        <p>
+                            Helping students develop digital
+                            knowledge and technology skills.
+                        </p>
+                    </div>
+
+                    <div class="facility-card premium-reveal-card">
+                        <div class="facility-icon">⚽</div>
+                        <h3>Sports Activities</h3>
+                        <p>
+                            Promoting fitness, teamwork and
+                            confidence through sports.
+                        </p>
+                    </div>
+
+                    <div class="facility-card premium-reveal-card">
+                        <div class="facility-icon">🏫</div>
+                        <h3>Classrooms</h3>
+                        <p>
+                            Providing a positive and comfortable
+                            learning environment.
+                        </p>
+                    </div>
+
+                    <div class="facility-card premium-reveal-card">
+                        <div class="facility-icon">🎨</div>
+                        <h3>Creative Activities</h3>
+                        <p>
+                            Encouraging students to explore
+                            their creativity and talents.
+                        </p>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+        <!-- ==========================================
+             END: FACILITIES SECTION
+        ========================================== -->
+
+
+        <!-- ==========================================
+             START: GALLERY SECTION
+        ========================================== -->
+
+        <section class="gallery-section" id="gallery">
+
+            <div class="container">
+
+                <div class="section-heading">
+
+                    <span class="section-label">
+                        COLLEGE GALLERY
+                    </span>
+
+                    <h2>
+                        A Glimpse of <span>College Life</span>
+                    </h2>
+
+                    <p>
+                        Moments, memories and milestones
+                        from our college.
+                    </p>
+
+                </div>
+
+                {% if gallery_images %}
+
+                <div class="memory-carousel" id="memoryCarousel">
+
+                    <button
+                        class="memory-arrow memory-prev"
+                        type="button"
+                        aria-label="Previous image">
+                        &#10094;
+                    </button>
+
+                    <div class="memory-carousel-track">
+
+                        {% for item in gallery_images %}
+
+                        <div class="memory-slide">
+
+                            <div class="memory-image">
+
+                                <img
+                                    src="{{ item.image.url }}"
+                                    alt="{{ item.title }}"
+                                    loading="lazy">
+
+                                <div class="memory-overlay">
+
+                                    <h3>{{ item.title }}</h3>
+
+                                    {% if item.description %}
+                                    <p>{{ item.description }}</p>
+                                    {% endif %}
+
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                        {% endfor %}
+
+                    </div>
+
+                    <button
+                        class="memory-arrow memory-next"
+                        type="button"
+                        aria-label="Next image">
+                        &#10095;
+                    </button>
+
+                </div>
+
+                <div class="memory-dots"></div>
+
+                {% else %}
+
+                <div class="gallery-empty">
+                    <div>📸</div>
+                    <h3>Gallery Coming Soon</h3>
+                    <p>
+                        College memories will appear here soon.
+                    </p>
+                </div>
+
+                {% endif %}
+
+            </div>
+
+        </section>
+
+        <!-- ==========================================
+             END: GALLERY SECTION
+        ========================================== -->
+
+
+        <!-- ==========================================
+             START: TEACHERS / FACULTY SECTION
+        ========================================== -->
+
+        <section class="teachers-section" id="teachers">
+
+            <div class="container">
+
+                <div class="section-heading">
+
+                    <span class="section-label">
+                        OUR FACULTY
+                    </span>
+
+                    <h2>
+                        Meet Our <span>Teachers</span>
+                    </h2>
+
+                    <p>
+                        Our dedicated teachers are the foundation
+                        of quality education and student success.
+                    </p>
+
+                </div>
+
+                {% if teachers %}
+
+                <!-- 3D TEACHERS CAROUSEL START -->
+
+                <div
+                    class="teachers-carousel"
+                    id="teachersCarousel">
+
+                    <button
+                        class="carousel-arrow carousel-prev"
+                        type="button"
+                        aria-label="Previous teacher">
+                        &#10094;
+                    </button>
+
+                    <div class="teachers-stage">
+
+                        {% for teacher in teachers %}
+
+                        <!-- START: PREMIUM FACULTY CARD -->
+                        <div
+                            class="faculty-card carousel-card"
+                            data-slide="{{ forloop.counter0 }}">
+
+                            <div class="faculty-photo">
+
+                                {% if teacher.photo %}
+
+                                <img
+                                    src="{{ teacher.photo.url }}"
+                                    alt="{{ teacher.name }}"
+                                    loading="lazy">
+
+                                {% else %}
+
+                                <div class="faculty-placeholder">
+                                    HH
+                                </div>
+
+                                {% endif %}
+
+                            </div>
+
+                            <div class="faculty-info">
+
+                                <span class="faculty-label">
+                                    FACULTY MEMBER
+                                </span>
+
+                                <h3>{{ teacher.name }}</h3>
+
+                                <p class="faculty-designation">
+                                    {{ teacher.designation }}
+                                </p>
+
+                                <div class="faculty-card-actions">
+                                    <div class="faculty-subject">
+                                        <span
+                                            class="faculty-subject-icon"
+                                            aria-hidden="true">✦</span>
+                                        <span>{{ teacher.subject }}</span>
+                                    </div>
+
+                                    <button
+                                        type="button"
+                                        class="faculty-view-btn"
+                                        data-modal="teacher-modal-{{ teacher.id }}">
+                                        View Details
+                                        <span
+                                            class="faculty-view-arrow"
+                                            aria-hidden="true">→</span>
+                                    </button>
+                                </div>
+
+                            </div>
+
+                        </div>
+                        <!-- END: PREMIUM FACULTY CARD -->
+
+                        {% endfor %}
+
+                    </div>
+
+                    <button
+                        class="carousel-arrow carousel-next"
+                        type="button"
+                        aria-label="Next teacher">
+                        &#10095;
+                    </button>
+
+                </div>
+
+                <div
+                    class="carousel-dots"
+                    id="teachersDots"
+                    aria-label="Teacher slides">
+                </div>
+
+                <!-- 3D TEACHERS CAROUSEL END -->
+
+
+                <!-- TEACHER MODALS START -->
+
+                {% for teacher in teachers %}
+
+                <div
+                    class="faculty-modal"
+                    id="teacher-modal-{{ teacher.id }}"
+                    aria-hidden="true">
+
+                    <div class="faculty-modal-content">
+
+                        <button
+                            type="button"
+                            class="faculty-modal-close"
+                            aria-label="Close">
+                            &times;
+                        </button>
+
+                        <div class="faculty-modal-photo">
+
+                            {% if teacher.photo %}
+
+                            <img
+                                src="{{ teacher.photo.url }}"
+                                alt="{{ teacher.name }}"
+                                loading="lazy">
+
+                            {% else %}
+
+                            <div class="faculty-placeholder">
+                                HH
+                            </div>
+
+                            {% endif %}
+
+                        </div>
+
+                        <div class="faculty-modal-info">
+
+                            <span class="faculty-label">
+                                FACULTY PROFILE
+                            </span>
+
+                            <h2>{{ teacher.name }}</h2>
+
+                            <p class="faculty-designation">
+                                {{ teacher.designation }}
+                            </p>
+
+                            <div class="faculty-modal-divider"></div>
+
+                            <p>
+                                <strong>Subject:</strong>
+                                {{ teacher.subject }}
+                            </p>
+
+                            <p>
+                                <strong>Qualification:</strong>
+                                {{ teacher.qualification }}
+                            </p>
+
+                            {% if teacher.description %}
+
+                            <div class="faculty-full-description">
+
+                                <strong>About Teacher</strong>
+
+                                <p>
+                                    {{ teacher.description }}
+                                </p>
+
+                            </div>
+
+                            {% endif %}
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+                {% endfor %}
+
+                <!-- TEACHER MODALS END -->
+
+                {% else %}
+
+                <div class="no-teachers">
+                    <p>
+                        Teacher profiles will be available soon.
+                    </p>
+                </div>
+
+                {% endif %}
+
+            </div>
+
+        </section>
+
+        <!-- ==========================================
+             END: TEACHERS / FACULTY SECTION
+        ========================================== -->
+
+
+        <!-- ==========================================
+             START: CONTACT SECTION
+        ========================================== -->
+
+        <section class="contact-section" id="contact">
+
+            <div class="container">
+
+                <div class="section-heading">
+
+                    <span class="section-label">
+                        CONTACT US
+                    </span>
+
+                    <h2>
+                        Get In <span>Touch</span>
+                    </h2>
+
+                    <p>
+                        We would love to hear from you.
+                        Feel free to contact our college.
+                    </p>
+
+                </div>
+
+                <div class="contact-wrapper">
+
+                    <!-- CONTACT FORM -->
+
+                    <div class="contact-form-box premium-reveal-panel">
+
+                        <h3>Send Us a Message</h3>
+
+                        {% if messages %}
+
+                            {% for message in messages %}
+
+                            {% if message.tags == 'error' %}
+                            <div class="error-message">
+                                {{ message }}
+                            </div>
+                            {% else %}
+                            <div class="success-message">
+                                {{ message }}
+                            </div>
+                            {% endif %}
+
+                            {% endfor %}
+
+                        {% endif %}
+
+                        {% if contact_form.errors %}
+
+                        <div class="error-message">
+                            Please correct the errors below.
+                        </div>
+
+                        {% endif %}
+
+                        <form
+                            method="POST"
+                            action="{% url 'home' %}#contact"
+                            class="contact-form">
+
+                            {% csrf_token %}
+
+                            <div class="form-fields">
+                                {{ contact_form.as_p }}
+                            </div>
+
+                            <button type="submit">
+                                Send Message
+                            </button>
+
+                        </form>
+
+                    </div>
+
+
+                    <!-- COLLEGE INFORMATION -->
+
+                    <div class="contact-info premium-reveal-panel">
+
+                        <h3>College Information</h3>
+
+                        <div class="contact-info-item">
+                            <h4>College Address</h4>
+                            <p>
+                                Mohammadpur Babai,
+                                Chandausi, Sambhal,
+                                Uttar Pradesh
+                            </p>
+                        </div>
+
+                        <div class="contact-info-item">
+                            <h4>Phone Number</h4>
+                            <p>+91 96970 70XXX</p>
+                        </div>
+
+                        <div class="contact-info-item">
+                            <h4>Email Address</h4>
+                            <p>hhintercollege@gmail.com</p>
+                        </div>
+
+                        <div class="contact-info-item">
+                            <h4>Working Hours</h4>
+                            <p>Monday - Saturday</p>
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- GOOGLE MAP START -->
+
+                <div class="contact-map">
+
+                    <div class="map-heading">
+                        <h3>Find Our Location</h3>
+                        <p>Visit H.H. Inter College</p>
+                    </div>
+
+                    <iframe
+                        src="https://www.google.com/maps?q=28.496690,78.673030&output=embed"
+                        width="100%"
+                        height="300"
+                        style="border:0;"
+                        loading="lazy"
+                        allowfullscreen
+                        referrerpolicy="no-referrer-when-downgrade">
+                    </iframe>
+
+                    <a
+                        href="https://maps.app.goo.gl/wDnKQUWaWiZoanG47"
+                        target="_blank"
+                        rel="noopener noreferrer">
+                        Open Location in Google Maps →
+                    </a>
+
+                </div>
+
+                <!-- GOOGLE MAP END -->
+
+            </div>
+
+        </section>
+
+        <!-- ==========================================
+             END: CONTACT SECTION
+        ========================================== -->
+
+    </main>
+    <!-- ==========================================
+         END: MAIN PAGE CONTENT
+    ========================================== -->
+
+
+    <!-- ==========================================
+         START: FOOTER SECTION
+    ========================================== -->
+
+    <footer class="main-footer">
+
+        <div class="footer-container">
+
+            <div class="footer-grid">
+
+                <!-- COLLEGE DETAILS -->
+
+                <div class="footer-about">
+
+                    <h2>
+                        H.H. <span>INTER COLLEGE</span>
+                    </h2>
+
+                    <p>
+                        Providing quality education and building
+                        a brighter future through knowledge,
+                        discipline and excellence.
+                    </p>
+
+                    <div class="footer-social">
+
+                        <a
+                            href="YOUR_FACEBOOK_URL"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            aria-label="Facebook">
+                            f
+                        </a>
+
+                        <a
+                            href="YOUR_INSTAGRAM_URL"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            aria-label="Instagram">
+                            ◎
+                        </a>
+
+                        <a
+                            href="YOUR_YOUTUBE_URL"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            aria-label="YouTube">
+                            ▶
+                        </a>
+
+                    </div>
+
+                </div>
+
+
+                <!-- QUICK LINKS -->
+
+                <div class="footer-links">
+
+                    <h3>Quick Links</h3>
+
+                    <ul>
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="#about">About Us</a></li>
+                        <li><a href="#academics">Academics</a></li>
+                        <li><a href="#facilities">Facilities</a></li>
+                        <li><a href="#gallery">Gallery</a></li>
+                        <li><a href="#teachers">Teachers</a></li>
+                        <li><a href="#contact">Contact Us</a></li>
+                    </ul>
+
+                </div>
+
+
+                <!-- IMPORTANT LINKS -->
+
+                <div class="footer-links">
+
+                    <h3>Important Links</h3>
+
+                    <ul>
+                        <li><a href="#academics">Our Courses</a></li>
+                        <li><a href="#gallery">College Gallery</a></li>
+                        <li><a href="{% url 'admission_enquiry' %}">Admission Enquiry</a></li>
+                        <li><a href="#contact">Get In Touch</a></li>
+                    </ul>
+
+                </div>
+
+
+                <!-- CONTACT DETAILS -->
+
+                <div class="footer-contact">
+
+                    <h3>Contact Information</h3>
+
+                    <p>
+                        <span>Address:</span><br>
+                        Mohammadpur Babai, Chandausi,
+                        Sambhal, Uttar Pradesh
+                    </p>
+
+                    <p>
+                        <span>Phone:</span><br>
+                        +91 96905 2XXXX
+                    </p>
+
+                    <p>
+                        <span>Email:</span><br>
+                        hhintercollege@gmail.com
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <!-- FOOTER BOTTOM -->
+
+            <div class="footer-bottom">
+
+                <p>
+                    © {% now "Y" %} H.H. Inter College.
+                    All Rights Reserved.
+                </p>
+
+                <p>
+                    Designed & Developed with ❤️ F.K
+                </p>
+
+            </div>
+
+        </div>
+
+    </footer>
+
+    <!-- ==========================================
+         END: FOOTER SECTION
+    ========================================== -->
+
+
+    <!-- JAVASCRIPT -->
+
+    <script src="{% static 'website/js/script.js' %}" defer></script>
+
+</body>
+</html>

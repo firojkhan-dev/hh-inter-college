@@ -1,0 +1,153 @@
+
+
+<!-- ==========================================
+             START: CONTACT SECTION
+        ========================================== -->
+
+        <section class="contact-section" id="contact">
+
+            <div class="container">
+
+                <div class="section-heading">
+
+                    <span class="section-label">
+                        CONTACT US
+                    </span>
+
+                    <h2>
+                        Get In <span>Touch</span>
+                    </h2>
+
+                    <p>
+                        We would love to hear from you.
+                        Feel free to contact our college.
+                    </p>
+
+                </div>
+
+                <div class="contact-wrapper">
+
+                    <!-- CONTACT FORM -->
+
+                    <div class="contact-form-box">
+
+                        <h3>Send Us a Message</h3>
+
+                        {% if messages %}
+
+                            {% for message in messages %}
+
+                            {% if message.tags == 'error' %}
+                            <div class="error-message">
+                                {{ message }}
+                            </div>
+                            {% else %}
+                            <div class="success-message">
+                                {{ message }}
+                            </div>
+                            {% endif %}
+
+                            {% endfor %}
+
+                        {% endif %}
+
+                        {% if contact_form.errors %}
+
+                        <div class="error-message">
+                            Please correct the errors below.
+                        </div>
+
+                        {% endif %}
+
+                        <form
+                            method="POST"
+                            action="{% url 'home' %}#contact"
+                            class="contact-form">
+
+                            {% csrf_token %}
+
+                            <div class="form-fields">
+                                {{ contact_form.as_p }}
+                            </div>
+
+                            <button type="submit">
+                                Send Message
+                            </button>
+
+                        </form>
+
+                    </div>
+
+
+                    <!-- COLLEGE INFORMATION -->
+
+                    <div class="contact-info">
+
+                        <h3>College Information</h3>
+
+                        <div class="contact-info-item">
+                            <h4>College Address</h4>
+                            <p>
+                                Mohammadpur Babai,
+                                Chandausi, Sambhal,
+                                Uttar Pradesh
+                            </p>
+                        </div>
+
+                        <div class="contact-info-item">
+                            <h4>Phone Number</h4>
+                            <p>+91 96970 70XXX</p>
+                        </div>
+
+                        <div class="contact-info-item">
+                            <h4>Email Address</h4>
+                            <p>hhintercollege@gmail.com</p>
+                        </div>
+
+                        <div class="contact-info-item">
+                            <h4>Working Hours</h4>
+                            <p>Monday - Saturday</p>
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- GOOGLE MAP START -->
+
+                <div class="contact-map">
+
+                    <div class="map-heading">
+                        <h3>Find Our Location</h3>
+                        <p>Visit H.H. Inter College</p>
+                    </div>
+
+                    <iframe
+                        src="https://www.google.com/maps?q=28.496690,78.673030&output=embed"
+                        width="100%"
+                        height="300"
+                        style="border:0;"
+                        loading="lazy"
+                        allowfullscreen
+                        referrerpolicy="no-referrer-when-downgrade">
+                    </iframe>
+
+                    <a
+                        href="https://maps.app.goo.gl/wDnKQUWaWiZoanG47"
+                        target="_blank"
+                        rel="noopener noreferrer">
+                        Open Location in Google Maps →
+                    </a>
+
+                </div>
+
+                <!-- GOOGLE MAP END -->
+
+            </div>
+
+        </section>
+
+        <!-- ==========================================
+             END: CONTACT SECTION
+        ========================================== -->

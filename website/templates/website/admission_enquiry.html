@@ -1,0 +1,68 @@
+
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Admission Enquiry | H.H. Inter College</title>
+
+    <link rel="stylesheet" href="{% static 'website/css/admission.css' %}">
+</head>
+
+<body>
+
+    <section class="admission-section">
+
+        <div class="admission-container">
+                            <!-- Django Messages Start -->
+                {% if messages %}
+                    {% for message in messages %}
+                        <div class="alert alert-{{ message.tags }}">
+                            {{ message }}
+                        </div>
+                    {% endfor %}
+                {% endif %}
+                <!-- Django Messages End -->
+
+            <div class="admission-heading">
+                <span>H.H. INTER COLLEGE</span>
+                <h1>Admission <strong>Enquiry</strong></h1>
+                <p>Fill out the form below to enquire about admission.</p>
+            </div>
+
+            <form method="POST">
+                {% csrf_token %}
+
+                {{ form.non_field_errors }}
+
+                <div class="form-grid">
+
+                    {% for field in form %}
+                        <div class="form-group">
+                            <label for="{{ field.id_for_label }}">
+                                {{ field.label }}
+                            </label>
+
+                            {{ field }}
+
+                            {{ field.errors }}
+                        </div>
+                    {% endfor %}
+
+                </div>
+
+                <button type="submit">
+                    Submit Enquiry
+                </button>
+
+            </form>
+
+        </div>
+
+    </section>
+
+</body>
+</html>
