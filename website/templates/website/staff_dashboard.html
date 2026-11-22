@@ -1,0 +1,54 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="robots" content="noindex, nofollow">
+    <title>Staff Dashboard | H.H. Inter College</title>
+    <link rel="stylesheet" href="{% static 'website/css/auth.css' %}">
+</head>
+<body>
+    <main class="dashboard-shell">
+        <header class="dashboard-header">
+            <a class="brand" href="{% url 'home' %}">
+                <span class="brand-mark">HH</span>
+                <span><strong>H.H. INTER COLLEGE</strong><small>STAFF PORTAL</small></span>
+            </a>
+            <div class="header-actions">
+                <span class="signed-in">Signed in as <strong>{{ request.user.get_username }}</strong></span>
+                <form method="post" action="{% url 'staff_logout' %}">
+                    {% csrf_token %}
+                    <button class="logout-button" type="submit">Sign out</button>
+                </form>
+            </div>
+        </header>
+        <section class="dashboard-intro">
+            <span class="eyebrow">COLLEGE MANAGEMENT</span>
+            <h1>Staff <em>Dashboard</em></h1>
+            <p>Welcome back. Here is a quick overview of your college website records.</p>
+        </section>
+        <section class="stats-grid" aria-label="College record summary">
+            <article class="stat-card"><span class="stat-label">Teachers</span><strong>{{ teacher_count }}</strong><span class="stat-note">Faculty records</span></article>
+            <article class="stat-card"><span class="stat-label">Notices</span><strong>{{ notice_count }}</strong><span class="stat-note">College announcements</span></article>
+            <article class="stat-card"><span class="stat-label">Gallery</span><strong>{{ gallery_count }}</strong><span class="stat-note">Uploaded memories</span></article>
+            <article class="stat-card"><span class="stat-label">Admission enquiries</span><strong>{{ admission_count }}</strong><span class="stat-note">Student applications</span></article>
+            <article class="stat-card"><span class="stat-label">Contact messages</span><strong>{{ message_count }}</strong><span class="stat-note">Website enquiries</span></article>
+        </section>
+        <section class="management-panel">
+            <div>
+                <span class="eyebrow">MANAGEMENT</span>
+                <h2>Manage college content</h2>
+                <p>Use the secure Django administration area to add, review and update website records.</p>
+            </div>
+            {% if request.user.is_superuser %}
+                <a class="primary-button admin-link" href="{% url 'admin:index' %}">Open Admin Panel <span aria-hidden="true">↗</span></a>
+            {% else %}
+                <span class="permission-note">For content changes, contact a college administrator.</span>
+            {% endif %}
+        </section>
+        <a class="back-link" href="{% url 'home' %}">← View public college website</a>
+        <footer>© {% now "Y" %} H.H. Inter College · Staff Portal</footer>
+    </main>
+</body>
+</html>
