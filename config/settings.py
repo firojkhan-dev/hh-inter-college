@@ -210,4 +210,3 @@ SESSION_COOKIE_SECURE = _environment_boolean(
 CSRF_COOKIE_SECURE = _environment_boolean(
     "DJANGO_CSRF_COOKIE_SECURE", not DEBUG
 )
-
