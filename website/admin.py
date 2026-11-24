@@ -6,6 +6,7 @@ from .models import (
     Gallery,
     ContactMessage,
     AdmissionEnquiry,
+    CollegeLogo,
 )
 
 
@@ -48,3 +49,10 @@ class AdmissionEnquiryAdmin(admin.ModelAdmin):
     search_fields = ("student_name", "father_name", "mobile")
     list_filter = ("class_applying_for", "created_at")
     readonly_fields = ("created_at",)
+
+
+
+
+@admin.register(CollegeLogo)
+class CollegeLogoAdmin(admin.ModelAdmin):
+    list_display = ('id', 'logo')

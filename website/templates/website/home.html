@@ -26,6 +26,8 @@
             </a>
 
             <button
+
+
                 class="menu-toggle"
                 id="menuToggle"
                 type="button"
@@ -150,9 +152,21 @@
                 <div class="about-visual">
 
                     <div class="about-image-card">
-                        <span class="about-icon">🏫</span>
+
+                        {% if college_logo and college_logo.logo %}
+                            <img
+                                src="{{ college_logo.logo.url }}"
+                                alt="H.H. Inter College Logo"
+                                class="about-college-logo"
+                            >
+                        {% else %}
+                            <span class="about-icon">🏫</span>
+                        {% endif %}
+
                         <h3>H.H. Inter College</h3>
+
                         <p>Learning • Growing • Achieving</p>
+
                     </div>
 
                     <div class="about-experience">

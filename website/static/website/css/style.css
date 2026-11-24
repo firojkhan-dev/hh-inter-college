@@ -3102,3 +3102,12 @@ a {
 }
 
 /* END: PREMIUM FACULTY CARD STYLES */
+/* College Logo Inside About Card */
+
+.about-college-logo {
+    width: 130px;
+    height: 110px;
+    object-fit: contain;
+    display: block;
+    margin: 0 auto 25px;
+}

@@ -98,6 +98,9 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'website',
+    'logo.apps.LogoConfig',
+   
+    
 ]
 
 MIDDLEWARE = [
@@ -122,6 +125,7 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                'website.context_processors.college_logo',
             ],
         },
     },
