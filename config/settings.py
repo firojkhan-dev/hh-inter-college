@@ -142,6 +142,13 @@ WSGI_APPLICATION = 'config.wsgi.application'
 #         'NAME': BASE_DIR / 'db.sqlite3',
 #     }
 # }
+DATABASE_OPTIONS = {
+    "charset": "utf8mb4",
+}
+DB_SSL_CA = os.environ.get("DB_SSL_CA")
+if DB_SSL_CA:
+    DATABASE_OPTIONS["ssl"] = {"ca": DB_SSL_CA}
+
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
@@ -150,9 +157,7 @@ DATABASES = {
         'PASSWORD': _required_environment_variable("DB_PASSWORD"),
         'HOST': os.environ.get("DB_HOST", "127.0.0.1"),
         'PORT': os.environ.get("DB_PORT", "3306"),
-        'OPTIONS': {
-            'charset': 'utf8mb4',
-        },
+        'OPTIONS': DATABASE_OPTIONS,
     }
 }
 
@@ -252,3 +257,20 @@ CSRF_TRUSTED_ORIGINS = [
     for origin in os.environ.get("DJANGO_CSRF_TRUSTED_ORIGINS", "").split(",")
     if origin.strip()
 ]
+
+LOGGING = {
+    "version": 1,
+    "disable_existing_loggers": False,
+    "handlers": {
+        "console": {
+            "class": "logging.StreamHandler",
+        },
+    },
+    "loggers": {
+        "django.request": {
+            "handlers": ["console"],
+            "level": "ERROR",
+            "propagate": False,
+        },
+    },
+}
