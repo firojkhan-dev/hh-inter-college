@@ -1,0 +1,98 @@
+{% load translated %}
+<!-- ==========================================
+             START: GALLERY SECTION
+        ========================================== -->
+
+        <section class="gallery-section" id="gallery">
+
+            <div class="container">
+
+                <div class="section-heading">
+
+                    <span class="section-label">
+                        {% if site_language == "hi" %}कॉलेज गैलरी{% else %}COLLEGE GALLERY{% endif %}
+                    </span>
+
+                    <h2>
+                        {% if site_language == "hi" %}कॉलेज जीवन की <span>एक झलक</span>{% else %}A Glimpse of <span>College Life</span>{% endif %}
+                    </h2>
+
+                    <p>
+                        {% if site_language == "hi" %}कॉलेज की गतिविधियों और यादों की झलक।{% else %}Moments, memories and milestones from our college.{% endif %}
+                    </p>
+
+                </div>
+
+                {% if gallery_images %}
+
+                <div class="memory-carousel" id="memoryCarousel">
+
+                    <button
+                        class="memory-arrow memory-prev"
+                        type="button"
+                        aria-label="Previous image">
+                        &#10094;
+                    </button>
+
+                    <div class="memory-carousel-track">
+
+                        {% for item in gallery_images %}
+
+                        <div class="memory-slide">
+
+                            <div class="memory-image">
+
+                                <img
+                                    src="{{ item.image.url }}"
+                                    alt="{% translated item 'title' site_language %}"
+                                    loading="lazy">
+
+                                <div class="memory-overlay">
+
+                                    <h3>{% translated item "title" site_language %}</h3>
+
+                                    {% if item.description or item.description_hi %}
+                                    <p>{% translated item "description" site_language %}</p>
+                                    {% endif %}
+
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                        {% endfor %}
+
+                    </div>
+
+                    <button
+                        class="memory-arrow memory-next"
+                        type="button"
+                        aria-label="Next image">
+                        &#10095;
+                    </button>
+
+                </div>
+
+                <div class="memory-dots"></div>
+                <p class="section-more-link"><a href="{% url 'gallery_list' %}">{% if site_language == "hi" %}पूरी गैलरी देखें{% else %}View full gallery{% endif %} →</a></p>
+
+                {% else %}
+
+                <div class="gallery-empty">
+                    <div>📸</div>
+                    <h3>{% if site_language == "hi" %}गैलरी जल्द आ रही है{% else %}Gallery Coming Soon{% endif %}</h3>
+                    <p>
+                        {% if site_language == "hi" %}कॉलेज की तस्वीरें जल्द यहाँ दिखाई देंगी।{% else %}College memories will appear here soon.{% endif %}
+                    </p>
+                </div>
+
+                {% endif %}
+
+            </div>
+
+        </section>
+
+        <!-- ==========================================
+             END: GALLERY SECTION
+        ========================================== -->

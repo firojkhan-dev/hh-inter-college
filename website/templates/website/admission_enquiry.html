@@ -1,39 +1,37 @@
-
+{% extends "website/base.html" %}
 {% load static %}
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+{% block title %}{% if site_language == "hi" %}प्रवेश पूछताछ{% else %}Admission Enquiry{% endif %} | H.H. Inter College{% endblock %}
 
-    <title>Admission Enquiry | H.H. Inter College</title>
-
+{% block extra_head %}
     <link rel="stylesheet" href="{% static 'website/css/admission.css' %}">
-</head>
+{% endblock %}
 
-<body>
-
-    <section class="admission-section">
+{% block content %}
+    <main class="admission-section">
 
         <div class="admission-container">
-                            <!-- Django Messages Start -->
-                {% if messages %}
-                    {% for message in messages %}
-                        <div class="alert alert-{{ message.tags }}">
-                            {{ message }}
-                        </div>
-                    {% endfor %}
-                {% endif %}
-                <!-- Django Messages End -->
+            {% if messages %}
+                {% for message in messages %}
+                    <div class="alert alert-{{ message.tags }}">
+                        {{ message }}
+                    </div>
+                {% endfor %}
+            {% endif %}
 
             <div class="admission-heading">
                 <span>H.H. INTER COLLEGE</span>
-                <h1>Admission <strong>Enquiry</strong></h1>
-                <p>Fill out the form below to enquire about admission.</p>
+                <h1>
+                    {% if site_language == "hi" %}
+                        प्रवेश <strong>पूछताछ</strong>
+                    {% else %}
+                        Admission <strong>Enquiry</strong>
+                    {% endif %}
+                </h1>
+                <p>{% if site_language == "hi" %}प्रवेश के बारे में पूछताछ करने के लिए नीचे दिया गया फ़ॉर्म भरें।{% else %}Fill out the form below to enquire about admission.{% endif %}</p>
             </div>
 
-            <form method="POST">
+            <form method="POST" class="admission-form">
                 {% csrf_token %}
 
                 {{ form.non_field_errors }}
@@ -55,14 +53,12 @@
                 </div>
 
                 <button type="submit">
-                    Submit Enquiry
+                    {% if site_language == "hi" %}पूछताछ भेजें{% else %}Submit Enquiry{% endif %}
                 </button>
 
             </form>
 
         </div>
 
-    </section>
-
-</body>
-</html>
+    </main>
+{% endblock %}

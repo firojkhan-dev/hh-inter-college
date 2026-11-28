@@ -1,0 +1,43 @@
+{% extends "website/base.html" %}
+{% load translated %}
+
+{% block title %}{% if site_language == "hi" %}कॉलेज गैलरी | H.H. Inter College{% else %}College Gallery | H.H. Inter College{% endif %}{% endblock %}
+
+{% block content %}
+<main class="content-page container">
+    <header class="content-page-heading">
+        <h1>{% if site_language == "hi" %}कॉलेज गैलरी{% else %}College Gallery{% endif %}</h1>
+        <p>{% if site_language == "hi" %}कॉलेज की गतिविधियों और यादों की तस्वीरें।{% else %}Photos and memories from college activities.{% endif %}</p>
+    </header>
+    <nav class="album-filter" aria-label="{% if site_language == 'hi' %}गैलरी एल्बम{% else %}Gallery albums{% endif %}">
+        <a href="{% url 'gallery_list' %}">{% if site_language == "hi" %}सभी तस्वीरें{% else %}All photos{% endif %}</a>
+        {% for album in albums %}
+            <a href="{% url 'gallery_list' %}?album={{ album.pk }}">{% translated album "name" site_language %}</a>
+        {% endfor %}
+    </nav>
+    {% if selected_album %}
+        <h2>{% translated selected_album "name" site_language %}</h2>
+        <p>{% translated selected_album "description" site_language %}</p>
+    {% endif %}
+    <div class="gallery-grid">
+        {% for item in page_obj %}
+            <figure class="gallery-item">
+                <img src="{{ item.image.url }}" alt="{% translated item 'title' site_language %}" loading="lazy">
+                <figcaption>
+                    <strong>{% translated item "title" site_language %}</strong>
+                    <span>{% translated item "description" site_language %}</span>
+                </figcaption>
+            </figure>
+        {% empty %}
+            <p>{% if site_language == "hi" %}इस एल्बम में कोई तस्वीर उपलब्ध नहीं है।{% else %}No photos are available in this album.{% endif %}</p>
+        {% endfor %}
+    </div>
+    {% if page_obj.has_other_pages %}
+        <nav class="pagination" aria-label="Gallery pages">
+            {% if page_obj.has_previous %}<a href="?{% if selected_album %}album={{ selected_album.pk }}&{% endif %}page={{ page_obj.previous_page_number }}">{% if site_language == "hi" %}पिछला{% else %}Previous{% endif %}</a>{% endif %}
+            <span>{% if site_language == "hi" %}पृष्ठ{% else %}Page{% endif %} {{ page_obj.number }} / {{ page_obj.paginator.num_pages }}</span>
+            {% if page_obj.has_next %}<a href="?{% if selected_album %}album={{ selected_album.pk }}&{% endif %}page={{ page_obj.next_page_number }}">{% if site_language == "hi" %}अगला{% else %}Next{% endif %}</a>{% endif %}
+        </nav>
+    {% endif %}
+</main>
+{% endblock %}

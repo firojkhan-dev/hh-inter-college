@@ -1,0 +1,146 @@
+<!-- ==========================================
+             START: CONTACT SECTION
+        ========================================== -->
+
+        <section class="contact-section" id="contact">
+
+            <div class="container">
+
+                <div class="section-heading">
+
+                    <span class="section-label">
+                        {% if site_language == "hi" %}संपर्क करें{% else %}CONTACT US{% endif %}
+                    </span>
+
+                    <h2>
+                        {% if site_language == "hi" %}<span>संपर्क</span> करें{% else %}Get In <span>Touch</span>{% endif %}
+                    </h2>
+
+                    <p>
+                        {% if site_language == "hi" %}हमें आपसे सुनकर खुशी होगी। कॉलेज से संपर्क करें।{% else %}We would love to hear from you. Feel free to contact our college.{% endif %}
+                    </p>
+
+                </div>
+
+                <div class="contact-wrapper">
+
+                    <!-- CONTACT FORM -->
+
+                    <div class="contact-form-box premium-reveal-panel">
+
+                        <h3>{% if site_language == "hi" %}हमें संदेश भेजें{% else %}Send Us a Message{% endif %}</h3>
+
+                        {% if messages %}
+
+                            {% for message in messages %}
+
+                            {% if message.tags == 'error' %}
+                            <div class="error-message">
+                                {{ message }}
+                            </div>
+                            {% else %}
+                            <div class="success-message">
+                                {{ message }}
+                            </div>
+                            {% endif %}
+
+                            {% endfor %}
+
+                        {% endif %}
+
+                        {% if contact_form.errors %}
+
+                        <div class="error-message">
+                            {% if site_language == "hi" %}कृपया नीचे दी गई त्रुटियाँ ठीक करें।{% else %}Please correct the errors below.{% endif %}
+                        </div>
+
+                        {% endif %}
+
+                        <form
+                            method="POST"
+                            action="{% url 'home' %}#contact"
+                            class="contact-form">
+
+                            {% csrf_token %}
+
+                            <div class="form-fields">
+                                {{ contact_form.as_p }}
+                            </div>
+
+                            <button type="submit">
+                                {% if site_language == "hi" %}संदेश भेजें{% else %}Send Message{% endif %}
+                            </button>
+
+                        </form>
+
+                    </div>
+
+
+                    <!-- COLLEGE INFORMATION -->
+
+                    <div class="contact-info premium-reveal-panel">
+
+                        <h3>{% if site_language == "hi" %}कॉलेज की जानकारी{% else %}College Information{% endif %}</h3>
+
+                        <div class="contact-info-item">
+                            <h4>{% if site_language == "hi" %}कॉलेज का पता{% else %}College Address{% endif %}</h4>
+                            <p>{% if site_language == "hi" %}{{ site_settings.address_hi|default:"मोहम्मदपुर बाबई, चन्दौसी, सम्भल, उत्तर प्रदेश" }}{% else %}{{ site_settings.address|default:"Mohammadpur Babai, Chandausi, Sambhal, Uttar Pradesh" }}{% endif %}</p>
+                        </div>
+
+                        <div class="contact-info-item">
+                            <h4>{% if site_language == "hi" %}फ़ोन नंबर{% else %}Phone Number{% endif %}</h4>
+                            {% if site_settings.phone %}<p>{{ site_settings.phone }}</p>{% endif %}
+                        </div>
+
+                        <div class="contact-info-item">
+                            <h4>{% if site_language == "hi" %}ईमेल पता{% else %}Email Address{% endif %}</h4>
+                            {% if site_settings.public_email %}<p>{{ site_settings.public_email }}</p>{% endif %}
+                        </div>
+
+                        <div class="contact-info-item">
+                            <h4>{% if site_language == "hi" %}कार्य समय{% else %}Working Hours{% endif %}</h4>
+                            <p>{% if site_language == "hi" %}{{ site_settings.office_hours_hi|default:"सोमवार - शनिवार" }}{% else %}{{ site_settings.office_hours|default:"Monday - Saturday" }}{% endif %}</p>
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- GOOGLE MAP START -->
+
+                <div class="contact-map">
+
+                    <div class="map-heading">
+                        <h3>{% if site_language == "hi" %}हमारा स्थान देखें{% else %}Find Our Location{% endif %}</h3>
+                        <p>{% if site_language == "hi" %}एच.एच. इंटर कॉलेज आएँ{% else %}Visit H.H. Inter College{% endif %}</p>
+                    </div>
+
+                    <iframe
+                        src="{{ site_settings.map_embed_url|default:'https://www.google.com/maps?q=28.496690,78.673030&output=embed' }}"
+                        width="100%"
+                        height="300"
+                        style="border:0;"
+                        loading="lazy"
+                        allowfullscreen
+                        referrerpolicy="no-referrer-when-downgrade">
+                    </iframe>
+
+                    <a
+                        href="https://maps.app.goo.gl/wDnKQUWaWiZoanG47"
+                        target="_blank"
+                        rel="noopener noreferrer">
+                        {% if site_language == "hi" %}Google Maps में स्थान खोलें{% else %}Open Location in Google Maps{% endif %} →
+                    </a>
+
+                </div>
+
+                <!-- GOOGLE MAP END -->
+
+            </div>
+
+        </section>
+
+        <!-- ==========================================
+             END: CONTACT SECTION
+        ========================================== -->

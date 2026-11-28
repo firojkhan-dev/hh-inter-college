@@ -1,0 +1,43 @@
+{% extends "website/base.html" %}
+{% load translated %}
+
+{% block title %}{% if site_language == "hi" %}खोज | H.H. Inter College{% else %}Search | H.H. Inter College{% endif %}{% endblock %}
+
+{% block content %}
+<main class="content-page container">
+    <header class="content-page-heading">
+        <h1>{% if site_language == "hi" %}वेबसाइट खोजें{% else %}Search the website{% endif %}</h1>
+    </header>
+    <form method="get" action="{% url 'site_search' %}" class="search-form">
+        <label for="site-search">{% if site_language == "hi" %}खोज शब्द{% else %}Search term{% endif %}</label>
+        <input id="site-search" type="search" name="q" value="{{ query }}" maxlength="100" required>
+        <button type="submit">{% if site_language == "hi" %}खोजें{% else %}Search{% endif %}</button>
+    </form>
+    {% if query %}
+        <section>
+            <h2>{% if site_language == "hi" %}सूचनाएँ{% else %}Notices{% endif %}</h2>
+            {% for notice in notices %}
+                <p><a href="{% url 'notice_detail' notice.pk %}">{% translated notice "title" site_language %}</a></p>
+            {% empty %}<p>{% if site_language == "hi" %}कोई सूचना नहीं मिली।{% else %}No matching notices.{% endif %}</p>{% endfor %}
+        </section>
+        <section>
+            <h2>{% if site_language == "hi" %}शिक्षक{% else %}Teachers{% endif %}</h2>
+            {% for teacher in teachers %}
+                <p><a href="{% url 'teacher_detail' teacher.pk %}">{{ teacher.name }}</a> — {{ teacher.subject }}</p>
+            {% empty %}<p>{% if site_language == "hi" %}कोई शिक्षक नहीं मिला।{% else %}No matching teachers.{% endif %}</p>{% endfor %}
+        </section>
+        <section>
+            <h2>{% if site_language == "hi" %}जानकारी पृष्ठ{% else %}Information pages{% endif %}</h2>
+            {% for page in pages %}
+                <p><a href="{% url 'information_page' page.slug %}">{% translated page "title" site_language %}</a></p>
+            {% empty %}<p>{% if site_language == "hi" %}कोई पृष्ठ नहीं मिला।{% else %}No matching pages.{% endif %}</p>{% endfor %}
+        </section>
+        <section>
+            <h2>{% if site_language == "hi" %}गैलरी{% else %}Gallery{% endif %}</h2>
+            {% for item in gallery_images %}
+                <p>{% translated item "title" site_language %}</p>
+            {% empty %}<p>{% if site_language == "hi" %}कोई तस्वीर नहीं मिली।{% else %}No matching gallery images.{% endif %}</p>{% endfor %}
+        </section>
+    {% endif %}
+</main>
+{% endblock %}

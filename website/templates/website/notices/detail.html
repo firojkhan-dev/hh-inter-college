@@ -1,0 +1,20 @@
+{% extends "website/base.html" %}
+{% load translated %}
+
+{% block title %}{% translated notice "title" site_language %} | H.H. Inter College{% endblock %}
+
+{% block content %}
+<main class="content-page container">
+    <article class="content-card content-detail">
+        <p class="content-meta">{{ notice.published_date|date:"d M Y" }}{% if notice.category %} · {{ notice.category }}{% endif %}</p>
+        <h1>{% translated notice "title" site_language %}</h1>
+        <div class="content-rich-text">{% translated notice "description" site_language %}</div>
+        {% if notice.notice_file %}
+            <a class="content-link" href="{{ notice.notice_file.url }}" target="_blank" rel="noopener noreferrer">
+                {% if site_language == "hi" %}संलग्न सूचना डाउनलोड करें{% else %}Download attached notice{% endif %}
+            </a>
+        {% endif %}
+    </article>
+    <a class="content-link" href="{% url 'notice_list' %}">{% if site_language == "hi" %}सभी सूचनाएँ{% else %}Back to all notices{% endif %}</a>
+</main>
+{% endblock %}

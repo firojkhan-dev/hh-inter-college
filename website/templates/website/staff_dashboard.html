@@ -6,13 +6,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="robots" content="noindex, nofollow">
     <title>Staff Dashboard | H.H. Inter College</title>
+    <link rel="icon" type="image/svg+xml" href="{% static 'website/img/favicon.svg' %}">
     <link rel="stylesheet" href="{% static 'website/css/auth.css' %}">
 </head>
 <body>
     <main class="dashboard-shell">
         <header class="dashboard-header">
             <a class="brand" href="{% url 'home' %}">
-                <span class="brand-mark">HH</span>
+                {% if college_logo and college_logo.logo %}
+                    <img class="brand-logo" src="{{ college_logo.logo.url }}" alt="">
+                {% else %}
+                    <img class="brand-logo" src="{% static 'website/img/college-school-mark.png' %}" alt="">
+                {% endif %}
                 <span><strong>H.H. INTER COLLEGE</strong><small>STAFF PORTAL</small></span>
             </a>
             <div class="header-actions">
@@ -35,6 +40,45 @@
             <article class="stat-card"><span class="stat-label">Admission enquiries</span><strong>{{ admission_count }}</strong><span class="stat-note">Student applications</span></article>
             <article class="stat-card"><span class="stat-label">Contact messages</span><strong>{{ message_count }}</strong><span class="stat-note">Website enquiries</span></article>
         </section>
+        <section class="management-panel">
+            <div>
+                <span class="eyebrow">STAFF WORKSPACE</span>
+                <h2>Review incoming requests</h2>
+                <p>Access is shown only when your Django account has the matching model permission.</p>
+            </div>
+            <div class="dashboard-links">
+                {% if perms.website.view_admissionenquiry %}
+                    <a class="primary-button" href="{% url 'staff_admissions' %}">Admission enquiries</a>
+                {% endif %}
+                {% if perms.website.view_contactmessage %}
+                    <a class="primary-button" href="{% url 'staff_messages' %}">Contact messages</a>
+                {% endif %}
+            </div>
+        </section>
+        {% if perms.website.view_admissionenquiry and recent_admissions %}
+            <section class="management-panel dashboard-recent">
+                <div>
+                    <span class="eyebrow">LATEST</span>
+                    <h2>Recent admission enquiries</h2>
+                    {% for enquiry in recent_admissions %}
+                        <p>{{ enquiry.student_name }} · {{ enquiry.class_applying_for }} · {{ enquiry.get_status_display }}</p>
+                    {% endfor %}
+                </div>
+                <a class="primary-button" href="{% url 'staff_admissions' %}">View all</a>
+            </section>
+        {% endif %}
+        {% if perms.website.view_contactmessage and recent_messages %}
+            <section class="management-panel dashboard-recent">
+                <div>
+                    <span class="eyebrow">LATEST</span>
+                    <h2>Recent contact messages</h2>
+                    {% for message in recent_messages %}
+                        <p>{{ message.subject }} · {{ message.name }}{% if not message.is_read %} · Unread{% endif %}</p>
+                    {% endfor %}
+                </div>
+                <a class="primary-button" href="{% url 'staff_messages' %}">View all</a>
+            </section>
+        {% endif %}
         <section class="management-panel">
             <div>
                 <span class="eyebrow">MANAGEMENT</span>

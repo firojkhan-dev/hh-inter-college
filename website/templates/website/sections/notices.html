@@ -1,0 +1,72 @@
+{% load translated %}
+<!-- ==========================================
+             START: NOTICE BOARD / ANNOUNCEMENTS
+        ========================================== -->
+
+        <section class="announcement-section" id="announcements">
+
+            <div class="container">
+
+                <div class="section-heading">
+
+                    <span class="section-label">
+                        {% if site_language == "hi" %}नवीनतम अपडेट{% else %}LATEST UPDATES{% endif %}
+                    </span>
+
+                    <h2>
+                        {% if site_language == "hi" %}नवीनतम <span>सूचनाएँ</span>{% else %}Latest <span>Announcements</span>{% endif %}
+                    </h2>
+
+                    <p>
+                        {% if site_language == "hi" %}कॉलेज की नवीनतम खबरों और सूचनाओं से अपडेट रहें।{% else %}Stay updated with the latest college news and notices.{% endif %}
+                    </p>
+
+                </div>
+
+                <div class="announcement-grid">
+
+                    {% for notice in notices %}
+
+                    <div class="announcement-card premium-reveal-card">
+
+                        <div class="announcement-date">
+                            {{ notice.published_date|date:"d M Y" }}{% if notice.category or notice.category_hi %} · {% if site_language == "hi" %}{{ notice.category_hi|default:notice.category }}{% else %}{{ notice.category }}{% endif %}{% endif %}
+                        </div>
+
+                        <h3>{% translated notice "title" site_language %}</h3>
+
+                        <p>
+                            {% translated notice "description" site_language as notice_description %}
+                            {{ notice_description|truncatewords:25 }}
+                        </p>
+
+                        <a href="{% url 'notice_detail' notice.pk %}" class="notice-download">
+                            <span>{% if site_language == "hi" %}पूरी सूचना पढ़ें{% else %}Read full notice{% endif %}</span>
+                            <span class="notice-arrow" aria-hidden="true">→</span>
+                        </a>
+                        {% if notice.notice_file %}
+                            <a href="{{ notice.notice_file.url }}" target="_blank" rel="noopener noreferrer" class="notice-download">
+                                {% if site_language == "hi" %}फ़ाइल डाउनलोड करें{% else %}Download file{% endif %}
+                            </a>
+                        {% endif %}
+
+                    </div>
+
+                    {% empty %}
+
+                    <p class="no-notice">
+                        {% if site_language == "hi" %}अभी कोई सूचना उपलब्ध नहीं है।{% else %}No announcements available right now.{% endif %}
+                    </p>
+
+                    {% endfor %}
+
+                </div>
+                <p class="section-more-link"><a href="{% url 'notice_list' %}">{% if site_language == "hi" %}सभी सूचनाएँ देखें{% else %}View all notices{% endif %} →</a></p>
+
+            </div>
+
+        </section>
+
+        <!-- ==========================================
+             END: NOTICE BOARD / ANNOUNCEMENTS
+        ========================================== -->

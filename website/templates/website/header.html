@@ -1,0 +1,62 @@
+{% load static %}
+<!-- ==========================================
+     START: HEADER / NAVBAR SECTION
+========================================== -->
+<header class="header">
+    <nav class="navbar container" aria-label="{% if site_language == 'hi' %}मुख्य नेविगेशन{% else %}Main navigation{% endif %}">
+        <a href="{% url 'home' %}#home" class="logo" aria-label="H.H. Inter College home">
+            {% if college_logo and college_logo.logo %}
+                <img class="logo-mark" src="{{ college_logo.logo.url }}" alt="">
+            {% else %}
+                <img class="logo-mark" src="{% static 'website/img/college-school-mark.png' %}" alt="">
+            {% endif %}
+            <span class="logo-copy">
+                <span class="logo-name">H.H. Inter College</span>
+                <span class="logo-tagline">{% if site_language == "hi" %}सीखना • बढ़ना • आगे बढ़ना{% else %}Learning • Growing • Moving{% endif %}</span>
+            </span>
+        </a>
+
+        <button
+            class="menu-toggle"
+            id="menuToggle"
+            type="button"
+            aria-label="{% if site_language == 'hi' %}नेविगेशन खोलें या बंद करें{% else %}Toggle navigation{% endif %}"
+            aria-controls="navLinks"
+            aria-expanded="false">
+            <span class="menu-toggle-icon" aria-hidden="true"></span>
+        </button>
+
+        <ul class="nav-links" id="navLinks">
+            <li><a href="{% url 'home' %}#home">{% if site_language == "hi" %}मुख्य पृष्ठ{% else %}Home{% endif %}</a></li>
+            <li><a href="{% url 'home' %}#about">{% if site_language == "hi" %}परिचय{% else %}About{% endif %}</a></li>
+            <li><a href="{% url 'home' %}#academics">{% if site_language == "hi" %}शिक्षा{% else %}Academics{% endif %}</a></li>
+            <li><a href="{% url 'home' %}#teachers">{% if site_language == "hi" %}शिक्षक{% else %}Teachers{% endif %}</a></li>
+            <li><a href="{% url 'home' %}#facilities">{% if site_language == "hi" %}सुविधाएँ{% else %}Facilities{% endif %}</a></li>
+            <li><a href="{% url 'notice_list' %}">{% if site_language == "hi" %}सूचनाएँ{% else %}Notices{% endif %}</a></li>
+            <li><a href="{% url 'gallery_list' %}">{% if site_language == "hi" %}गैलरी{% else %}Gallery{% endif %}</a></li>
+            <li><a href="{% url 'home' %}#contact">{% if site_language == "hi" %}संपर्क{% else %}Contact{% endif %}</a></li>
+            <li class="nav-cta-item">
+                <a href="{% url 'admission_enquiry' %}" class="nav-btn">
+                    {% if site_language == "hi" %}प्रवेश पूछताछ{% else %}Admission Enquiry{% endif %}
+                </a>
+            </li>
+            <li class="nav-search-item">
+                <form method="get" action="{% url 'site_search' %}" class="nav-search">
+                    <label class="visually-hidden" for="header-search">{% if site_language == "hi" %}वेबसाइट खोजें{% else %}Search website{% endif %}</label>
+                    <input id="header-search" type="search" name="q" maxlength="100" placeholder="{% if site_language == 'hi' %}खोजें{% else %}Search{% endif %}">
+                </form>
+            </li>
+            <li class="nav-language-item">
+                <form method="post" action="{% url 'switch_language' %}" class="language-switch">
+                    {% csrf_token %}
+                    <input type="hidden" name="language" value="{% if site_language == 'hi' %}en{% else %}hi{% endif %}">
+                    <input type="hidden" name="next" value="{{ request.get_full_path }}">
+                    <button type="submit" lang="{% if site_language == 'hi' %}hi{% else %}en{% endif %}">{% if site_language == "hi" %}English{% else %}हिन्दी{% endif %}</button>
+                </form>
+            </li>
+        </ul>
+    </nav>
+</header>
+<!-- ==========================================
+     END: HEADER / NAVBAR SECTION
+========================================== -->

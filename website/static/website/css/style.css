@@ -72,26 +72,7 @@ a {
     align-items: center;
     gap: 12px;
     color: var(--primary);
-    font-size: 21px;
     font-weight: 800;
-}
-
-.logo small {
-    display: block;
-    font-size: 10px;
-    letter-spacing: 2px;
-    color: var(--text);
-}
-
-.logo-icon {
-    width: 48px;
-    height: 48px;
-    display: grid;
-    place-items: center;
-    color: white;
-    background: var(--primary);
-    border-radius: 14px;
-    font-size: 17px;
 }
 
 .nav-links {
@@ -2048,29 +2029,6 @@ a {
 ========================================== */
 
 @media (max-width: 901px) {
-    .menu-toggle {
-        display: block;
-        color: var(--primary);
-    }
-
-    .nav-links {
-        display: none;
-        position: absolute;
-        top: 84px;
-        left: 0;
-        width: 100%;
-        padding: 25px 5%;
-        background: white;
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 22px;
-        box-shadow: 0 15px 25px rgba(16, 38, 61, 0.08);
-    }
-
-    .nav-links.active {
-        display: flex;
-    }
-
     .hero-content {
         grid-template-columns: 1fr;
         gap: 20px;
@@ -2095,23 +2053,6 @@ a {
 }
 
 @media (max-width: 520px) {
-    .navbar {
-        min-height: 72px;
-    }
-
-    .logo {
-        font-size: 18px;
-    }
-
-    .logo-icon {
-        width: 42px;
-        height: 42px;
-    }
-
-    .nav-links {
-        top: 72px;
-    }
-
     .hero-content {
         padding-top: 55px;
         padding-bottom: 40px;

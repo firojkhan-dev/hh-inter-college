@@ -1,11 +1,9 @@
-from django.urls import path
+from django.urls import include, path
 
-from . import views
+from website.url_routes import public, staff
+
 
 urlpatterns = [
-    path("", views.home, name="home"),
-    path("admission-enquiry/", views.admission_enquiry, name="admission_enquiry"),
-    path("staff/login/", views.staff_login, name="staff_login"),
-    path("staff/dashboard/", views.staff_dashboard, name="staff_dashboard"),
-    path("staff/logout/", views.staff_logout, name="staff_logout"),
+    path("", include(public.urlpatterns)),
+    path("", include(staff.urlpatterns)),
 ]

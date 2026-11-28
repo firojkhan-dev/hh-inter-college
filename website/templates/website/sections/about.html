@@ -1,0 +1,105 @@
+        {% load static %}
+<!-- ==========================================
+             START: ABOUT SECTION
+        ========================================== -->
+
+        <section class="about-section" id="about">
+
+            <div class="container about-grid">
+
+                <div class="about-visual">
+
+                    <div class="about-image-card">
+
+                        {% if college_logo and college_logo.logo %}
+                            <img
+                                src="{{ college_logo.logo.url }}"
+                                alt="H.H. Inter College Logo"
+                                class="about-college-logo"
+                            >
+                        {% else %}
+                            <img
+                                src="{% static 'website/img/college-school-mark.png' %}"
+                                alt="H.H. Inter College Logo"
+                                class="about-college-logo"
+                            >
+                        {% endif %}
+
+                        <h3>H.H. Inter College</h3>
+
+                        <p>{% if site_language == "hi" %}सीखना • बढ़ना • आगे बढ़ना{% else %}Learning • Growing • Moving{% endif %}</p>
+
+                    </div>
+
+                    <div class="about-experience">
+                        <strong>{% if site_language == "hi" %}शिक्षा{% else %}Education{% endif %}</strong>
+                        <span>{% if site_language == "hi" %}उज्ज्वल भविष्य के लिए{% else %}For a Brighter Future{% endif %}</span>
+                    </div>
+
+                </div>
+
+                <div class="about-content">
+
+                    <span class="section-label">
+                        {% if site_language == "hi" %}हमारे कॉलेज के बारे में{% else %}ABOUT OUR COLLEGE{% endif %}
+                    </span>
+
+                    <h2>
+                        {% if site_language == "hi" %}विद्यार्थियों को <span>गुणवत्तापूर्ण शिक्षा</span> से सशक्त बनाना{% else %}Empowering Students Through <span>Quality Education</span>{% endif %}
+                    </h2>
+
+                    <p>
+                        {% if site_language == "hi" %}एच.एच. इंटर कॉलेज, मोहम्मदपुर बाबई, चन्दौसी, सम्भल, उत्तर प्रदेश में आपका स्वागत है।{% else %}Welcome to H.H. Inter College, Mohammadpur Babai, Chandausi, Sambhal, Uttar Pradesh.{% endif %}
+                    </p>
+
+                    <p>
+                        {% if site_language == "hi" %}हमारा उद्देश्य विद्यार्थियों को ऐसा सकारात्मक शिक्षण वातावरण देना है जहाँ वे ज्ञान, आत्मविश्वास, अनुशासन और आवश्यक जीवन कौशल विकसित कर सकें।{% else %}Our aim is to provide students with a positive learning environment where they can develop knowledge, confidence, discipline and essential life skills.{% endif %}
+                    </p>
+
+                    <div class="about-points">
+
+                        <div class="about-point">
+                            <span>✓</span>
+                            <div>
+                                <h4>{% if site_language == "hi" %}विद्यार्थी-केंद्रित शिक्षा{% else %}Student-Focused Learning{% endif %}</h4>
+                                <p>
+                                    {% if site_language == "hi" %}हर विद्यार्थी को सीखने और आगे बढ़ने के लिए प्रोत्साहित करना।{% else %}Encouraging every student to learn and grow.{% endif %}
+                                </p>
+                            </div>
+                        </div>
+
+                        <div class="about-point">
+                            <span>✓</span>
+                            <div>
+                                <h4>{% if site_language == "hi" %}समग्र विकास{% else %}Holistic Development{% endif %}</h4>
+                                <p>
+                                    {% if site_language == "hi" %}ज्ञान, मूल्य और आत्मविश्वास विकसित करना।{% else %}Building knowledge, values and confidence.{% endif %}
+                                </p>
+                            </div>
+                        </div>
+
+                        <div class="about-point">
+                            <span>✓</span>
+                            <div>
+                                <h4>{% if site_language == "hi" %}सकारात्मक वातावरण{% else %}Positive Environment{% endif %}</h4>
+                                <p>
+                                    {% if site_language == "hi" %}उज्ज्वल भविष्य के लिए अवसर बनाना।{% else %}Creating opportunities for a brighter future.{% endif %}
+                                </p>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <a href="#contact" class="btn btn-primary">
+                        {% if site_language == "hi" %}और जानें{% else %}Know More{% endif %}
+                    </a>
+
+                </div>
+
+            </div>
+
+        </section>
+
+        <!-- ==========================================
+             END: ABOUT SECTION
+        ========================================== -->

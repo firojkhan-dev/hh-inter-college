@@ -1,0 +1,62 @@
+<!-- ==========================================
+             START: ACADEMICS SECTION
+        ========================================== -->
+
+        <section class="academics-section" id="academics">
+
+            <div class="container">
+
+                <div class="section-heading">
+
+                    <span class="section-label">
+                        {% if site_language == "hi" %}हमारी शिक्षा{% else %}OUR ACADEMICS{% endif %}
+                    </span>
+
+                    <h2>
+                        {% if site_language == "hi" %}ऐसी शिक्षा जो <span>उज्ज्वल भविष्य</span> बनाए{% else %}Learning That Builds <span>Bright Futures</span>{% endif %}
+                    </h2>
+
+                    <p>
+                        {% if site_language == "hi" %}भविष्य के लिए ज्ञान, कौशल और आत्मविश्वास का विकास।{% else %}Developing knowledge, skills and confidence for tomorrow.{% endif %}
+                    </p>
+
+                </div>
+
+                <div class="academic-grid">
+
+                    <div class="academic-card premium-reveal-card">
+                        <div class="academic-icon">📚</div>
+                        <h3>{% if site_language == "hi" %}गुणवत्तापूर्ण शिक्षा{% else %}Quality Learning{% endif %}</h3>
+                        <p>
+                            {% if site_language == "hi" %}विषयों को समझने और मजबूत शैक्षणिक आधार बनाने पर ध्यान।{% else %}Focus on understanding concepts and building strong academic foundations.{% endif %}
+                        </p>
+                        <a href="{% url 'information_page' 'academics' %}">{% if site_language == "hi" %}और जानें{% else %}Learn More{% endif %} →</a>
+                    </div>
+
+                    <div class="academic-card premium-reveal-card">
+                        <div class="academic-icon">🔬</div>
+                        <h3>{% if site_language == "hi" %}व्यावहारिक ज्ञान{% else %}Practical Knowledge{% endif %}</h3>
+                        <p>
+                            {% if site_language == "hi" %}जिज्ञासा, रचनात्मकता और व्यावहारिक गतिविधियों से सीखने को प्रोत्साहन।{% else %}Encouraging curiosity, creativity and learning through practical activities.{% endif %}
+                        </p>
+                        <a href="{% url 'information_page' 'academics' %}">{% if site_language == "hi" %}और जानें{% else %}Learn More{% endif %} →</a>
+                    </div>
+
+                    <div class="academic-card premium-reveal-card">
+                        <div class="academic-icon">🎯</div>
+                        <h3>{% if site_language == "hi" %}विद्यार्थी विकास{% else %}Student Development{% endif %}</h3>
+                        <p>
+                            {% if site_language == "hi" %}विद्यार्थियों में अनुशासन, आत्मविश्वास और समस्या-समाधान कौशल विकसित करना।{% else %}Helping students develop discipline, confidence and problem-solving skills.{% endif %}
+                        </p>
+                        <a href="{% url 'information_page' 'academics' %}">{% if site_language == "hi" %}और जानें{% else %}Learn More{% endif %} →</a>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+        <!-- ==========================================
+             END: ACADEMICS SECTION
+        ========================================== -->

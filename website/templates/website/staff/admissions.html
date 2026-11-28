@@ -1,0 +1,53 @@
+{% extends "website/base.html" %}
+
+{% block title %}Admission Enquiries | Staff{% endblock %}
+
+{% block content %}
+<main class="content-page container">
+    <h1>Admission enquiries</h1>
+    <form method="get" class="search-form">
+        <label for="status-filter">Filter by status</label>
+        <select id="status-filter" name="status">
+            <option value="">All statuses</option>
+            {% for value, label in status_choices %}
+                <option value="{{ value }}" {% if status == value %}selected{% endif %}>{{ label }}</option>
+            {% endfor %}
+        </select>
+        <button type="submit">Filter</button>
+    </form>
+    <div class="content-card-grid">
+        {% for enquiry in page_obj %}
+            <article class="content-card">
+                <h2>{{ enquiry.student_name }}</h2>
+                <p>{{ enquiry.class_applying_for }} · {{ enquiry.mobile }}</p>
+                <p>{{ enquiry.email }}</p>
+                <p>Status: <strong>{{ enquiry.get_status_display }}</strong></p>
+                <p>Received {{ enquiry.created_at|date:"d M Y H:i" }}</p>
+                {% if perms.website.change_admissionenquiry %}
+                    <form method="post" action="{% url 'update_admission_status' enquiry.pk %}">
+                        {% csrf_token %}
+                        <label for="status-{{ enquiry.pk }}">Update status</label>
+                        <select id="status-{{ enquiry.pk }}" name="status">
+                            {% for value, label in status_choices %}
+                                <option value="{{ value }}" {% if enquiry.status == value %}selected{% endif %}>{{ label }}</option>
+                            {% endfor %}
+                        </select>
+                        <label for="notes-{{ enquiry.pk }}">Internal notes</label>
+                        <textarea id="notes-{{ enquiry.pk }}" name="internal_notes" rows="2">{{ enquiry.internal_notes }}</textarea>
+                        <button type="submit">Save status</button>
+                    </form>
+                {% endif %}
+            </article>
+        {% empty %}
+            <p>No admission enquiries found.</p>
+        {% endfor %}
+    </div>
+    {% if page_obj.has_other_pages %}
+        <nav class="pagination" aria-label="Admission enquiry pages">
+            {% if page_obj.has_previous %}<a href="?status={{ status }}&page={{ page_obj.previous_page_number }}">Previous</a>{% endif %}
+            <span>Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}</span>
+            {% if page_obj.has_next %}<a href="?status={{ status }}&page={{ page_obj.next_page_number }}">Next</a>{% endif %}
+        </nav>
+    {% endif %}
+</main>
+{% endblock %}

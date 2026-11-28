@@ -1,0 +1,157 @@
+{% load static %}
+
+    <!-- ==========================================
+         START: FOOTER SECTION
+    ========================================== -->
+
+    <footer class="main-footer">
+
+        <div class="footer-container">
+
+            <div class="footer-grid">
+
+                <!-- COLLEGE DETAILS -->
+
+                <div class="footer-about">
+
+                    <h2>
+                        H.H. <span>INTER COLLEGE</span>
+                    </h2>
+
+                    <p>
+                        Providing quality education and building
+                        a brighter future through knowledge,
+                        discipline and excellence.
+                    </p>
+
+                    <div class="footer-social">
+
+                        {% if site_settings.facebook_url %}
+                        <a
+                            href="{{ site_settings.facebook_url }}"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            aria-label="Facebook">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                                <path d="M13.5 22v-8.2h2.8l.4-3.2h-3.2V8.5c0-.9.3-1.6 1.6-1.6h1.7V4.1c-.3 0-1.3-.1-2.5-.1-2.5 0-4.1 1.5-4.1 4.3v2.3H8.2v3.2h2.7V22h2.6z"/>
+                            </svg>
+                        </a>
+                        {% endif %}
+
+                        {% if site_settings.instagram_url %}
+                        <a
+                            href="{{ site_settings.instagram_url }}"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            aria-label="Instagram">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                                <rect width="20" height="20" x="2" y="2" rx="5" ry="5"/>
+                                <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/>
+                                <line x1="17.5" x2="17.51" y1="6.5" y2="6.5"/>
+                            </svg>
+                        </a>
+                        {% endif %}
+
+                        {% if site_settings.youtube_url %}
+                        <a
+                            href="{{ site_settings.youtube_url }}"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            aria-label="YouTube">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                                <path d="M23.5 6.2a3 3 0 0 0-2.1-2.1C19.5 3.5 12 3.5 12 3.5s-7.5 0-9.4.6A3 3 0 0 0 .5 6.2 31.4 31.4 0 0 0 0 12a31.4 31.4 0 0 0 .5 5.8 3 3 0 0 0 2.1 2.1c1.9.6 9.4.6 9.4.6s7.5 0 9.4-.6a3 3 0 0 0 2.1-2.1A31.4 31.4 0 0 0 24 12a31.4 31.4 0 0 0-.5-5.8zM9.6 15.6V8.4l6.3 3.6-6.3 3.6z"/>
+                            </svg>
+                        </a>
+                        {% endif %}
+
+                    </div>
+
+                </div>
+
+
+                <!-- QUICK LINKS -->
+
+                <div class="footer-links">
+
+                    <h3>{% if site_language == "hi" %}त्वरित लिंक{% else %}Quick Links{% endif %}</h3>
+
+                    <ul>
+                        <li><a href="{% url 'home' %}#home">{% if site_language == "hi" %}मुख्य पृष्ठ{% else %}Home{% endif %}</a></li>
+                        <li><a href="{% url 'home' %}#about">{% if site_language == "hi" %}हमारे बारे में{% else %}About Us{% endif %}</a></li>
+                        <li><a href="{% url 'home' %}#academics">{% if site_language == "hi" %}शिक्षा{% else %}Academics{% endif %}</a></li>
+                        <li><a href="{% url 'home' %}#facilities">{% if site_language == "hi" %}सुविधाएँ{% else %}Facilities{% endif %}</a></li>
+                        <li><a href="{% url 'gallery_list' %}">{% if site_language == "hi" %}गैलरी{% else %}Gallery{% endif %}</a></li>
+                        <li><a href="{% url 'home' %}#teachers">{% if site_language == "hi" %}शिक्षक{% else %}Teachers{% endif %}</a></li>
+                        <li><a href="{% url 'home' %}#contact">{% if site_language == "hi" %}संपर्क करें{% else %}Contact Us{% endif %}</a></li>
+                        {% for page in published_pages %}
+                            <li><a href="{% url 'information_page' page.slug %}">{% if site_language == "hi" %}{{ page.title_hi|default:page.title }}{% else %}{{ page.title }}{% endif %}</a></li>
+                        {% endfor %}
+                    </ul>
+
+                </div>
+
+
+                <!-- IMPORTANT LINKS -->
+
+                <div class="footer-links">
+
+                    <h3>{% if site_language == "hi" %}महत्वपूर्ण लिंक{% else %}Important Links{% endif %}</h3>
+
+                    <ul>
+                        <li><a href="{% url 'home' %}#academics">{% if site_language == "hi" %}हमारे पाठ्यक्रम{% else %}Our Courses{% endif %}</a></li>
+                        <li><a href="{% url 'gallery_list' %}">{% if site_language == "hi" %}कॉलेज गैलरी{% else %}College Gallery{% endif %}</a></li>
+                        <li><a href="{% url 'admission_enquiry' %}">{% if site_language == "hi" %}प्रवेश पूछताछ{% else %}Admission Enquiry{% endif %}</a></li>
+                        <li><a href="{% url 'home' %}#contact">{% if site_language == "hi" %}संपर्क करें{% else %}Get In Touch{% endif %}</a></li>
+                    </ul>
+
+                </div>
+
+
+                <!-- CONTACT DETAILS -->
+
+                <div class="footer-contact">
+
+                    <h3>{% if site_language == "hi" %}संपर्क जानकारी{% else %}Contact Information{% endif %}</h3>
+
+                    <p>
+                        <span>{% if site_language == "hi" %}पता:{% else %}Address:{% endif %}</span><br>
+                        {% if site_language == "hi" %}{{ site_settings.address_hi|default:"मोहम्मदपुर बाबई, चन्दौसी, सम्भल, उत्तर प्रदेश" }}{% else %}{{ site_settings.address|default:"Mohammadpur Babai, Chandausi, Sambhal, Uttar Pradesh" }}{% endif %}
+                    </p>
+
+                    <p>
+                        <span>{% if site_language == "hi" %}फ़ोन:{% else %}Phone:{% endif %}</span><br>
+                        {% if site_settings.phone %}{{ site_settings.phone }}{% else %}{% if site_language == "hi" %}जानकारी के लिए कॉलेज से संपर्क करें{% else %}Contact the college office for details{% endif %}{% endif %}
+                    </p>
+
+                    <p>
+                        <span>{% if site_language == "hi" %}ईमेल:{% else %}Email:{% endif %}</span><br>
+                        {% if site_settings.public_email %}{{ site_settings.public_email }}{% else %}{% if site_language == "hi" %}जानकारी के लिए कॉलेज से संपर्क करें{% else %}Contact the college office for details{% endif %}{% endif %}
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <!-- FOOTER BOTTOM -->
+
+            <div class="footer-bottom">
+
+                <p>
+                    © {% now "Y" %} H.H. Inter College.
+                    All Rights Reserved.
+                </p>
+
+                <p>
+                    Designed & Developed with ❤️ F.K
+                </p>
+
+            </div>
+
+        </div>
+
+    </footer>
+
+    <!-- ==========================================
+         END: FOOTER SECTION
+    ========================================== -->

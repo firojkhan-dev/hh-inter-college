@@ -1,0 +1,84 @@
+<!-- ==========================================
+             START: HERO / HOME SECTION
+        ========================================== -->
+
+        <section class="hero" id="home">
+
+            <div class="container hero-content">
+
+                <div class="hero-text">
+
+                    <span class="eyebrow">
+                        {% if site_language == "hi" %}
+                            {{ site_settings.hero_eyebrow_hi|default:"एच.एच. इंटर कॉलेज में आपका स्वागत है" }}
+                        {% else %}
+                            {{ site_settings.hero_eyebrow|default:"WELCOME TO H.H. INTER COLLEGE" }}
+                        {% endif %}
+                    </span>
+
+                    <h1>
+                        {% if site_language == "hi" %}
+                            {{ site_settings.hero_heading_hi|default:"शिक्षा से उज्ज्वल भविष्य का निर्माण" }}
+                        {% else %}
+                            {{ site_settings.hero_heading|default:"Building Bright Futures Through Education" }}
+                        {% endif %}
+                    </h1>
+
+                    <p>
+                        {% if site_language == "hi" %}
+                            {{ site_settings.hero_description_hi|default:"ज्ञान, अनुशासन और आत्मविश्वास के साथ आगे बढ़ने का अवसर।" }}
+                        {% else %}
+                            {{ site_settings.hero_description|default:"Discover a place where knowledge meets opportunity. We inspire students to learn, grow and achieve their dreams." }}
+                        {% endif %}
+                    </p>
+
+                    <div class="hero-buttons">
+
+                        <a href="#about" class="btn btn-primary">
+                            {% if site_language == "hi" %}कॉलेज देखें{% else %}Explore College{% endif %}
+                        </a>
+
+                        <a href="#contact" class="btn btn-outline">
+                            {% if site_language == "hi" %}संपर्क करें{% else %}Contact Us{% endif %}
+                        </a>
+
+                    </div>
+
+                    <div class="hero-location">
+                        <span>📍</span>
+                        {% if site_language == "hi" %}
+                            {{ site_settings.address_hi|default:"मोहम्मदपुर बाबई, चन्दौसी, सम्भल, उत्तर प्रदेश" }}
+                        {% else %}
+                            {{ site_settings.address|default:"Mohammadpur Babai, Chandausi, Sambhal, Uttar Pradesh" }}
+                        {% endif %}
+                    </div>
+
+                </div>
+
+                <div class="hero-visual">
+
+                    <div class="visual-circle"></div>
+
+                    <div class="education-card">
+                        <div class="book-icon">📚</div>
+                        <h2>Learn Today</h2>
+                        <p>Lead Tomorrow</p>
+                    </div>
+
+                    <div class="floating-card card-one">
+                        🎓 Quality Education
+                    </div>
+
+                    <div class="floating-card card-two">
+                        ✨ Bright Future
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+        <!-- ==========================================
+             END: HERO / HOME SECTION
+        ========================================== -->

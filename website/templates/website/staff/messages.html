@@ -1,0 +1,29 @@
+{% extends "website/base.html" %}
+
+{% block title %}Contact Messages | Staff{% endblock %}
+
+{% block content %}
+<main class="content-page container">
+    <h1>Contact messages</h1>
+    <div class="content-card-grid">
+        {% for message in page_obj %}
+            <article class="content-card">
+                <p class="content-meta">{{ message.created_at|date:"d M Y H:i" }} · {% if message.is_read %}Read{% else %}Unread{% endif %}</p>
+                <h2>{{ message.subject }}</h2>
+                <p>{{ message.name }} · <a href="mailto:{{ message.email }}">{{ message.email }}</a></p>
+                {% if message.phone %}<p>{{ message.phone }}</p>{% endif %}
+                <p>{{ message.message }}</p>
+            </article>
+        {% empty %}
+            <p>No contact messages found.</p>
+        {% endfor %}
+    </div>
+    {% if page_obj.has_other_pages %}
+        <nav class="pagination" aria-label="Contact message pages">
+            {% if page_obj.has_previous %}<a href="?page={{ page_obj.previous_page_number }}">Previous</a>{% endif %}
+            <span>Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}</span>
+            {% if page_obj.has_next %}<a href="?page={{ page_obj.next_page_number }}">Next</a>{% endif %}
+        </nav>
+    {% endif %}
+</main>
+{% endblock %}

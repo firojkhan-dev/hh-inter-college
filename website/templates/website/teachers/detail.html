@@ -1,0 +1,22 @@
+{% extends "website/base.html" %}
+{% load translated %}
+
+{% block title %}{{ teacher.name }} | H.H. Inter College{% endblock %}
+
+{% block content %}
+<main class="content-page container">
+    <article class="teacher-profile content-card">
+        {% if teacher.photo %}
+            <img src="{{ teacher.photo.url }}" alt="{{ teacher.name }}" loading="lazy">
+        {% endif %}
+        <div>
+            <p class="content-meta">{% if site_language == "hi" %}शिक्षक परिचय{% else %}Teacher profile{% endif %}</p>
+            <h1>{{ teacher.name }}</h1>
+            <p>{% if site_language == "hi" %}{{ teacher.designation_hi|default:teacher.designation }} · {{ teacher.subject_hi|default:teacher.subject }}{% else %}{{ teacher.designation }} · {{ teacher.subject }}{% endif %}</p>
+            <p><strong>{% if site_language == "hi" %}योग्यता{% else %}Qualification{% endif %}:</strong> {% if site_language == "hi" %}{{ teacher.qualification_hi|default:teacher.qualification }}{% else %}{{ teacher.qualification }}{% endif %}</p>
+            <p>{% translated teacher "description" site_language %}</p>
+        </div>
+    </article>
+    <a class="content-link" href="{% url 'home' %}#teachers">{% if site_language == "hi" %}सभी शिक्षक{% else %}Back to teachers{% endif %}</a>
+</main>
+{% endblock %}

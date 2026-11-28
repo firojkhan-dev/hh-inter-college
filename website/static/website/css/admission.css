@@ -1,58 +1,42 @@
 
-:root {
-    --primary: #123b63;
-    --secondary: #e8a838;
-    --dark: #10263d;
-    --text: #536579;
-    --light: #f4f8fc;
-    --white: #ffffff;
-}
-
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
-body {
-    font-family: Arial, sans-serif;
-    background: var(--light);
-    color: var(--dark);
-}
-
 .admission-section {
-    min-height: 100vh;
-    padding: 65px 20px;
+    padding: clamp(48px, 7vw, 80px) 20px;
     display: flex;
     justify-content: center;
-    align-items: center;
+    align-items: flex-start;
+    background:
+        radial-gradient(circle at 12% 10%, rgba(232, 168, 56, 0.1), transparent 28%),
+        var(--light);
 }
 
 .admission-container {
     width: 100%;
     max-width: 850px;
     background: var(--white);
-    padding: 45px;
-    border-radius: 16px;
-    box-shadow: 0 12px 45px rgba(16, 38, 61, 0.10);
+    padding: clamp(24px, 5vw, 48px);
+    border: 1px solid #e3eaf1;
+    border-radius: 22px;
+    box-shadow: 0 18px 50px rgba(16, 38, 61, 0.09);
 }
 
 .admission-heading {
     text-align: center;
-    margin-bottom: 35px;
+    margin-bottom: clamp(26px, 4vw, 38px);
 }
 
 .admission-heading span {
     color: var(--secondary);
-    font-size: 13px;
+    font-size: 11px;
     font-weight: 700;
-    letter-spacing: 2px;
+    letter-spacing: 0.16em;
 }
 
 .admission-heading h1 {
-    font-size: 36px;
     margin: 12px 0;
     color: var(--primary);
+    font-family: "Playfair Display", Georgia, serif;
+    font-size: clamp(30px, 4.5vw, 42px);
+    line-height: 1.18;
 }
 
 .admission-heading h1 strong {
@@ -62,6 +46,7 @@ body {
 .admission-heading p {
     color: var(--text);
     font-size: 15px;
+    line-height: 1.7;
 }
 
 .form-grid {
@@ -88,14 +73,15 @@ body {
 
 .form-control {
     width: 100%;
-    padding: 13px 14px;
+    min-height: 48px;
+    padding: 12px 14px;
     border: 1px solid #dce4ed;
-    border-radius: 7px;
+    border-radius: 10px;
     outline: none;
     font-size: 14px;
     font-family: inherit;
     background: #fbfdff;
-    transition: 0.3s;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
 }
 
 .form-control:focus {
@@ -107,6 +93,10 @@ textarea.form-control {
     resize: vertical;
 }
 
+.form-group textarea.form-control {
+    min-height: 112px;
+}
+
 .form-group ul.errorlist,
 .errorlist {
     color: #dc3545;
@@ -114,38 +104,46 @@ textarea.form-control {
     list-style: none;
 }
 
-form button {
+.admission-form button {
     width: 100%;
     margin-top: 28px;
-    padding: 15px;
+    min-height: 52px;
+    padding: 14px 18px;
     border: none;
-    border-radius: 7px;
+    border-radius: 11px;
     background: var(--primary);
     color: var(--white);
     font-size: 15px;
     font-weight: 700;
     cursor: pointer;
-    transition: 0.3s;
+    transition: background-color 0.2s ease, color 0.2s ease, transform 0.2s ease;
 }
 
-form button:hover {
+.admission-form button:hover {
     background: var(--secondary);
     color: var(--dark);
     transform: translateY(-2px);
 }
 
+@media (hover: hover) and (prefers-reduced-motion: no-preference) {
+    .admission-container {
+        transition: transform 300ms ease, box-shadow 300ms ease;
+    }
+
+    .admission-container:hover {
+        transform: perspective(1200px) translateY(-3px) rotateX(0.5deg);
+        box-shadow: 0 24px 58px rgba(16, 38, 61, 0.12);
+    }
+}
+
 @media (max-width: 600px) {
 
     .admission-section {
-        padding: 25px 14px;
+        padding: 34px 14px 48px;
     }
 
     .admission-container {
-        padding: 25px 18px;
-    }
-
-    .admission-heading h1 {
-        font-size: 28px;
+        padding: 24px 18px;
     }
 
     .form-grid {

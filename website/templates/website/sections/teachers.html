@@ -1,0 +1,231 @@
+{% load translated %}
+<!-- ==========================================
+             START: TEACHERS / FACULTY SECTION
+        ========================================== -->
+
+        <section class="teachers-section" id="teachers">
+
+            <div class="container">
+
+                <div class="section-heading">
+
+                    <span class="section-label">
+                        {% if site_language == "hi" %}हमारे शिक्षक{% else %}OUR FACULTY{% endif %}
+                    </span>
+
+                    <h2>
+                        {% if site_language == "hi" %}हमारे <span>शिक्षक</span>{% else %}Meet Our <span>Teachers</span>{% endif %}
+                    </h2>
+
+                    <p>
+                        {% if site_language == "hi" %}हमारे समर्पित शिक्षक गुणवत्तापूर्ण शिक्षा और विद्यार्थियों की सफलता का आधार हैं।{% else %}Our dedicated teachers are the foundation of quality education and student success.{% endif %}
+                    </p>
+
+                </div>
+
+                {% if teachers %}
+
+                <!-- 3D TEACHERS CAROUSEL START -->
+
+                <div
+                    class="teachers-carousel"
+                    id="teachersCarousel">
+
+                    <button
+                        class="carousel-arrow carousel-prev"
+                        type="button"
+                        aria-label="Previous teacher">
+                        &#10094;
+                    </button>
+
+                    <div class="teachers-stage">
+
+                        {% for teacher in teachers %}
+
+                        <!-- START: PREMIUM FACULTY CARD -->
+                        <div
+                            class="faculty-card carousel-card"
+                            data-slide="{{ forloop.counter0 }}">
+
+                            <div class="faculty-photo">
+
+                                {% if teacher.photo %}
+
+                                <img
+                                    src="{{ teacher.photo.url }}"
+                                    alt="{{ teacher.name }}"
+                                    loading="lazy">
+
+                                {% else %}
+
+                                <div class="faculty-placeholder">
+                                    HH
+                                </div>
+
+                                {% endif %}
+
+                            </div>
+
+                            <div class="faculty-info">
+
+                                <span class="faculty-label">
+                                    {% if site_language == "hi" %}शिक्षक{% else %}FACULTY MEMBER{% endif %}
+                                </span>
+
+                                <h3>{{ teacher.name }}</h3>
+
+                                <p class="faculty-designation">
+                                    {% if site_language == "hi" %}{{ teacher.designation_hi|default:teacher.designation }}{% else %}{{ teacher.designation }}{% endif %}
+                                </p>
+
+                                <div class="faculty-card-actions">
+                                    <div class="faculty-subject">
+                                        <span
+                                            class="faculty-subject-icon"
+                                            aria-hidden="true">✦</span>
+                                        <span>{% if site_language == "hi" %}{{ teacher.subject_hi|default:teacher.subject }}{% else %}{{ teacher.subject }}{% endif %}</span>
+                                    </div>
+
+                                    <button
+                                        type="button"
+                                        class="faculty-view-btn"
+                                        data-modal="teacher-modal-{{ teacher.id }}">
+                                        {% if site_language == "hi" %}विवरण देखें{% else %}View Details{% endif %}
+                                        <span
+                                            class="faculty-view-arrow"
+                                            aria-hidden="true">→</span>
+                                    </button>
+                                </div>
+                                <a class="teacher-profile-link" href="{% url 'teacher_detail' teacher.pk %}">
+                                    {% if site_language == "hi" %}पूरा परिचय{% else %}Full profile{% endif %}
+                                </a>
+
+                            </div>
+
+                        </div>
+                        <!-- END: PREMIUM FACULTY CARD -->
+
+                        {% endfor %}
+
+                    </div>
+
+                    <button
+                        class="carousel-arrow carousel-next"
+                        type="button"
+                        aria-label="Next teacher">
+                        &#10095;
+                    </button>
+
+                </div>
+
+                <div
+                    class="carousel-dots"
+                    id="teachersDots"
+                    aria-label="Teacher slides">
+                </div>
+
+                <!-- 3D TEACHERS CAROUSEL END -->
+
+
+                <!-- TEACHER MODALS START -->
+
+                {% for teacher in teachers %}
+
+                <div
+                    class="faculty-modal"
+                    id="teacher-modal-{{ teacher.id }}"
+                    aria-hidden="true">
+
+                    <div class="faculty-modal-content">
+
+                        <button
+                            type="button"
+                            class="faculty-modal-close"
+                            aria-label="Close">
+                            &times;
+                        </button>
+
+                        <div class="faculty-modal-photo">
+
+                            {% if teacher.photo %}
+
+                            <img
+                                src="{{ teacher.photo.url }}"
+                                alt="{{ teacher.name }}"
+                                loading="lazy">
+
+                            {% else %}
+
+                            <div class="faculty-placeholder">
+                                HH
+                            </div>
+
+                            {% endif %}
+
+                        </div>
+
+                        <div class="faculty-modal-info">
+
+                            <span class="faculty-label">
+                                FACULTY PROFILE
+                            </span>
+
+                            <h2>{{ teacher.name }}</h2>
+
+                            <p class="faculty-designation">
+                                {% if site_language == "hi" %}{{ teacher.designation_hi|default:teacher.designation }}{% else %}{{ teacher.designation }}{% endif %}
+                            </p>
+
+                            <div class="faculty-modal-divider"></div>
+
+                            <p>
+                                <strong>{% if site_language == "hi" %}विषय:{% else %}Subject:{% endif %}</strong>
+                                {% if site_language == "hi" %}{{ teacher.subject_hi|default:teacher.subject }}{% else %}{{ teacher.subject }}{% endif %}
+                            </p>
+
+                            <p>
+                                <strong>{% if site_language == "hi" %}योग्यता:{% else %}Qualification:{% endif %}</strong>
+                                {% if site_language == "hi" %}{{ teacher.qualification_hi|default:teacher.qualification }}{% else %}{{ teacher.qualification }}{% endif %}
+                            </p>
+
+                            {% if teacher.description or teacher.description_hi %}
+
+                            <div class="faculty-full-description">
+
+                                <strong>{% if site_language == "hi" %}शिक्षक के बारे में{% else %}About Teacher{% endif %}</strong>
+
+                                <p>
+                                    {% translated teacher "description" site_language %}
+                                </p>
+
+                            </div>
+
+                            {% endif %}
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+                {% endfor %}
+
+                <!-- TEACHER MODALS END -->
+
+                {% else %}
+
+                <div class="no-teachers">
+                    <p>
+                        {% if site_language == "hi" %}शिक्षक परिचय जल्द उपलब्ध होंगे।{% else %}Teacher profiles will be available soon.{% endif %}
+                    </p>
+                </div>
+
+                {% endif %}
+
+            </div>
+
+        </section>
+
+        <!-- ==========================================
+             END: TEACHERS / FACULTY SECTION
+        ========================================== -->

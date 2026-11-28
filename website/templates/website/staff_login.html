@@ -1,24 +1,35 @@
 {% load static %}
 <!DOCTYPE html>
-<html lang="en">
+<html lang="{% if site_language == 'hi' %}hi{% else %}en{% endif %}">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="robots" content="noindex, nofollow">
-    <title>Staff Login | H.H. Inter College</title>
+    <title>{% if site_language == "hi" %}कर्मचारी लॉगिन{% else %}Staff Login{% endif %} | H.H. Inter College</title>
+    <link rel="icon" type="image/svg+xml" href="{% static 'website/img/favicon.svg' %}">
     <link rel="stylesheet" href="{% static 'website/css/auth.css' %}">
 </head>
 <body>
     <main class="auth-shell">
         <section class="auth-card" aria-labelledby="login-title">
+            <form method="post" action="{% url 'switch_language' %}" class="language-switch">
+                {% csrf_token %}
+                <input type="hidden" name="language" value="{% if site_language == 'hi' %}en{% else %}hi{% endif %}">
+                <input type="hidden" name="next" value="{{ request.get_full_path }}">
+                <button type="submit">{% if site_language == "hi" %}English{% else %}हिन्दी{% endif %}</button>
+            </form>
             <a class="brand" href="{% url 'home' %}" aria-label="H.H. Inter College home">
-                <span class="brand-mark">HH</span>
+                {% if college_logo and college_logo.logo %}
+                    <img class="brand-logo" src="{{ college_logo.logo.url }}" alt="">
+                {% else %}
+                    <img class="brand-logo" src="{% static 'website/img/college-school-mark.png' %}" alt="">
+                {% endif %}
                 <span><strong>H.H. INTER COLLEGE</strong><small>STAFF PORTAL</small></span>
             </a>
             <div class="auth-heading">
-                <span class="eyebrow">SECURE ACCESS</span>
-                <h1 id="login-title">Welcome <em>back.</em></h1>
-                <p>Sign in with your authorised college staff account.</p>
+                <span class="eyebrow">{% if site_language == "hi" %}सुरक्षित प्रवेश{% else %}SECURE ACCESS{% endif %}</span>
+                <h1 id="login-title">{% if site_language == "hi" %}वापसी पर <em>स्वागत है।</em>{% else %}Welcome <em>back.</em>{% endif %}</h1>
+                <p>{% if site_language == "hi" %}अपने अधिकृत कॉलेज कर्मचारी खाते से साइन इन करें।{% else %}Sign in with your authorised college staff account.{% endif %}</p>
             </div>
             {% if messages %}
                 {% for message in messages %}
@@ -34,19 +45,19 @@
                     </div>
                 {% endif %}
                 <div class="field">
-                    <label for="{{ form.username.id_for_label }}">Username</label>
+                    <label for="{{ form.username.id_for_label }}">{% if site_language == "hi" %}उपयोगकर्ता नाम{% else %}Username{% endif %}</label>
                     {{ form.username }}
                     {% for error in form.username.errors %}<small class="field-error">{{ error }}</small>{% endfor %}
                 </div>
                 <div class="field">
-                    <label for="{{ form.password.id_for_label }}">Password</label>
+                    <label for="{{ form.password.id_for_label }}">{% if site_language == "hi" %}पासवर्ड{% else %}Password{% endif %}</label>
                     {{ form.password }}
                     {% for error in form.password.errors %}<small class="field-error">{{ error }}</small>{% endfor %}
                 </div>
-                <button type="submit" class="primary-button">Sign in securely <span aria-hidden="true">→</span></button>
+                <button type="submit" class="primary-button">{% if site_language == "hi" %}सुरक्षित रूप से साइन इन करें{% else %}Sign in securely{% endif %} <span aria-hidden="true">→</span></button>
             </form>
-            <p class="auth-footnote">Access is restricted to authorised staff members.</p>
-            <a class="back-link" href="{% url 'home' %}">← Back to college website</a>
+            <p class="auth-footnote">{% if site_language == "hi" %}यह प्रवेश केवल अधिकृत कर्मचारियों के लिए है।{% else %}Access is restricted to authorised staff members.{% endif %}</p>
+            <a class="back-link" href="{% url 'home' %}">← {% if site_language == "hi" %}कॉलेज वेबसाइट पर वापस जाएँ{% else %}Back to college website{% endif %}</a>
         </section>
         <footer>© {% now "Y" %} H.H. Inter College · Secure Staff Access</footer>
     </main>

@@ -1,0 +1,37 @@
+{% extends "website/base.html" %}
+{% load translated %}
+
+{% block title %}{% if site_language == "hi" %}सूचनाएँ | H.H. Inter College{% else %}Notices | H.H. Inter College{% endif %}{% endblock %}
+
+{% block content %}
+<main class="content-page container">
+    <header class="content-page-heading">
+        <h1>{% if site_language == "hi" %}सूचना पट्ट{% else %}Notice Board{% endif %}</h1>
+        <p>{% if site_language == "hi" %}कॉलेज की नवीनतम और पिछली सूचनाएँ देखें।{% else %}Browse current college announcements and notices.{% endif %}</p>
+    </header>
+    <form method="get" action="{% url 'notice_list' %}" class="search-form">
+        <label for="notice-search">{% if site_language == "hi" %}सूचना खोजें{% else %}Search notices{% endif %}</label>
+        <input id="notice-search" type="search" name="q" value="{{ query }}" maxlength="100">
+        <button type="submit">{% if site_language == "hi" %}खोजें{% else %}Search{% endif %}</button>
+    </form>
+    <div class="content-card-grid">
+        {% for notice in page_obj %}
+            <article class="content-card">
+                <p class="content-meta">{{ notice.published_date|date:"d M Y" }}{% if notice.category %} · {{ notice.category }}{% endif %}</p>
+                <h2>{% translated notice "title" site_language %}</h2>
+                <p>{% translated notice "description" site_language %}</p>
+                <a class="content-link" href="{% url 'notice_detail' notice.pk %}">{% if site_language == "hi" %}पूरी सूचना पढ़ें{% else %}Read full notice{% endif %}</a>
+            </article>
+        {% empty %}
+            <p>{% if site_language == "hi" %}अभी कोई सूचना उपलब्ध नहीं है।{% else %}No notices are available.{% endif %}</p>
+        {% endfor %}
+    </div>
+    {% if page_obj.has_other_pages %}
+        <nav class="pagination" aria-label="Notice pages">
+            {% if page_obj.has_previous %}<a href="?q={{ query|urlencode }}&page={{ page_obj.previous_page_number }}">{% if site_language == "hi" %}पिछला{% else %}Previous{% endif %}</a>{% endif %}
+            <span>{% if site_language == "hi" %}पृष्ठ{% else %}Page{% endif %} {{ page_obj.number }} / {{ page_obj.paginator.num_pages }}</span>
+            {% if page_obj.has_next %}<a href="?q={{ query|urlencode }}&page={{ page_obj.next_page_number }}">{% if site_language == "hi" %}अगला{% else %}Next{% endif %}</a>{% endif %}
+        </nav>
+    {% endif %}
+</main>
+{% endblock %}

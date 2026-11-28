@@ -1,0 +1,14 @@
+{% extends "website/base.html" %}
+{% load translated %}
+
+{% block title %}{% translated page "title" site_language %} | H.H. Inter College{% endblock %}
+
+{% block content %}
+<main class="content-page container">
+    <article class="content-card content-detail">
+        <h1>{% translated page "title" site_language %}</h1>
+        <div class="content-rich-text">{% translated page "content" site_language %}</div>
+        <p class="content-meta">{% if site_language == "hi" %}अपडेट किया गया{% else %}Updated{% endif %}: {{ page.updated_at|date:"d M Y" }}</p>
+    </article>
+</main>
+{% endblock %}
